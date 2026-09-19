@@ -1,16 +1,30 @@
-# React + Vite
+# Estora
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> A high-end, AI-powered real estate listings platform featuring natural language search and a secure, glassmorphic administrative dashboard.
 
-Currently, two official plugins are available:
+![Estora Hero Placeholder](docs/hero-screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Estora is a modern real estate web application built as an internship capstone project. It redefines property discovery by allowing users to search for homes using natural language via the Gemini AI model, moving beyond traditional filter constraints. The platform also includes a fully secured, authenticated Admin portal for seamless property and image management.
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **AI-Powered Discovery:** Integrated Gemini API via a Vercel serverless function to translate natural language user prompts (e.g., "Find me a modern villa in Chennai") into targeted property queries.
+* **Premium UI/UX:** Designed with a luxury dark navy glassmorphic aesthetic, featuring responsive grid layouts, Framer Motion staggered entrance animations, and skeleton loading states.
+* **Secure Admin Dashboard:** A protected portal (Firebase Auth) enabling full CRUD operations for property listing management.
+* **Cloud Storage Uploads:** Direct-to-cloud image file uploading with live progress tracking using Firebase Storage.
 
-## Expanding the Oxlint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Category | Technologies |
+| :--- | :--- |
+| **Frontend** | React, Vite, Tailwind CSS v4, Framer Motion, Lucide React |
+| **Backend & Database** | Firebase (Firestore, Auth, Storage), Vercel Serverless Functions |
+| **AI Integration** | Google Gemini API (`@google/generative-ai`) |
+| **Deployment** | Vercel (CI/CD pipeline) |
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone [https://github.com/dheerajeshwar32/Estora.git](https://github.com/dheerajeshwar32/Estora.git)
+cd Estora

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useAppContext } from '../context/AppContext';
 
 const POSTS = [
   {
@@ -31,6 +32,7 @@ const POSTS = [
 ];
 
 const Blog = () => {
+  const { showToast } = useAppContext();
   useEffect(() => {
     document.title = 'Property Guides & Blog | Estora';
     window.scrollTo(0, 0);
@@ -69,7 +71,10 @@ const Blog = () => {
                 <p className="text-slate-400 font-light text-sm leading-relaxed mb-6">
                   {post.excerpt}
                 </p>
-                <button className="text-xs font-bold uppercase tracking-widest text-slate-300 group-hover:text-white transition-colors flex items-center gap-2">
+                <button 
+                  onClick={() => showToast('Full article view coming soon.', 'info')}
+                  className="text-xs font-bold uppercase tracking-widest text-slate-300 group-hover:text-white transition-colors flex items-center gap-2"
+                >
                   Read Article <span>&rarr;</span>
                 </button>
               </div>

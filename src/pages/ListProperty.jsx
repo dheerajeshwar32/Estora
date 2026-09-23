@@ -17,7 +17,8 @@ const ListProperty = () => {
   const [formData, setFormData] = useState({
     title: '', description: '', price: '', location: '',
     bedrooms: '', bathrooms: '', propertyType: 'apartment',
-    amenities: [], ownerName: '', ownerPhone: '', ownerEmail: '', videoUrl: ''
+    amenities: [], ownerName: '', ownerPhone: '', ownerEmail: '', videoUrl: '',
+    transactionType: 'buy', area: '', floorPlan: ''
   });
 
   const handleChange = (e) => {

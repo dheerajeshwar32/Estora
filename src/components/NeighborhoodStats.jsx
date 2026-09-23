@@ -26,7 +26,7 @@ const StatBar = ({ icon: Icon, label, score }) => (
 const NeighborhoodStats = ({ location, type = '' }) => {
   // Generate pseudo-random scores based on location length so it's consistent
   const getScore = (seed) => 65 + (seed % 30);
-  const locLength = location.length || 10;
+  const locLength = (location || '').length || 10;
   
   const isCommercial = type.toLowerCase().includes('commercial') || type.toLowerCase().includes('office');
   

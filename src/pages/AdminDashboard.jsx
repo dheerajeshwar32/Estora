@@ -40,7 +40,8 @@ const AdminDashboard = () => {
   const emptyForm = {
     title: '', description: '', price: '', location: '',
     bedrooms: '', bathrooms: '', propertyType: 'apartment',
-    existingImages: [], amenities: [], agentContact: ''
+    existingImages: [], amenities: [], agentContact: '',
+    area: '', transactionType: 'buy', status: 'available', floorPlan: ''
   };
   const [formData, setFormData] = useState(emptyForm);
 
@@ -232,6 +233,10 @@ const AdminDashboard = () => {
         images: allImages, 
         amenities: formData.amenities,
         agentContact: formData.agentContact,
+        area: Number(formData.area) || 0,
+        transactionType: formData.transactionType || 'buy',
+        status: formData.status || 'available',
+        floorPlan: formData.floorPlan || '',
       };
 
       if (editingId) {
@@ -320,7 +325,11 @@ const AdminDashboard = () => {
       propertyType: listing.propertyType || 'apartment',
       amenities: listing.amenities || [],
       existingImages: listing.images || [],
-      agentContact: listing.agentContact || ''
+      agentContact: listing.agentContact || '',
+      area: listing.area?.toString() || '',
+      transactionType: listing.transactionType || 'buy',
+      status: listing.status || 'available',
+      floorPlan: listing.floorPlan || ''
     });
     setEditingId(listing.id);
     setImageFiles([]);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { collection, getDocs, orderBy, query, limit, startAfter } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, BedDouble, Loader2 } from 'lucide-react';
+import { MapPin, BedDouble, Loader2, Sparkles, Shield, Zap, Search, ChevronDown } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
 import AiSearch from '../components/AiSearch';
 
@@ -149,8 +149,11 @@ const Listings = () => {
     setLocationStr('');
     setMinPrice('');
     setMaxPrice('');
+    setMinArea('');
+    setMaxArea('');
     setBedrooms('');
     setPropertyType('');
+    setTransactionType('');
     setSelectedAmenities([]);
   };
 
@@ -274,7 +277,7 @@ const Listings = () => {
       </div>
 
       {/* Reset Filters */}
-      {(locationStr || minPrice || maxPrice || bedrooms || propertyType || selectedAmenities.length > 0) && (
+      {(locationStr || minPrice || maxPrice || minArea || maxArea || bedrooms || propertyType || transactionType || selectedAmenities.length > 0) && (
         <button onClick={resetAllFilters} className="w-full text-xs font-bold tracking-widest uppercase text-slate-400 hover:text-white py-3 border border-white/10 rounded-xl hover:border-white/20 transition-all">
           Clear All Filters
         </button>
@@ -283,12 +286,12 @@ const Listings = () => {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 md:pt-8 md:pb-12">
       
       {/* Landing Hero Section */}
-      <div className="relative pt-10 pb-20 md:pt-16 md:pb-28 text-center overflow-hidden rounded-3xl mb-12">
+      <div className="relative pt-10 pb-16 md:pt-14 md:pb-20 text-center overflow-hidden rounded-3xl mb-4">
         {/* Animated Gradient Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
           <div className="absolute inset-0 bg-navy-950" />
           <motion.div 
             animate={{ 
@@ -335,13 +338,15 @@ const Listings = () => {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-500 relative z-10"
+            className="flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-500 relative z-10 mb-10"
           >
             <span>{listings.length}+ Listings</span>
             <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
             <span>{uniqueLocationsCount} Locations</span>
           </motion.div>
         )}
+
+
       </div>
 
       <AiSearch listings={listings} onSearchResults={setAiResults} resetFilters={resetAllFilters} />
@@ -353,18 +358,43 @@ const Listings = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+          className="mb-20"
         >
-          {[
-            { title: "AI-Powered Discovery", desc: "Just type what you want, and our Gemini-powered engine finds the perfect match instantly." },
-            { title: "Verified Premium", desc: "Every property is hand-picked and verified to ensure the highest standards of luxury." },
-            { title: "Seamless Experience", desc: "From immersive galleries to instant contact, designed for the modern homebuyer." }
-          ].map((feat, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
-              <h3 className="text-white font-medium mb-3 tracking-wide">{feat.title}</h3>
-              <p className="text-slate-400 font-light text-sm leading-relaxed">{feat.desc}</p>
+          <div className="flex flex-col md:flex-row justify-around items-center mb-12 gap-8 md:gap-6 text-center">
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">$2B+</div>
+              <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Property Value</div>
             </div>
-          ))}
+            <div className="hidden md:block w-px h-16 bg-white/10"></div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">99%</div>
+              <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Client Satisfaction</div>
+            </div>
+            <div className="hidden md:block w-px h-16 bg-white/10"></div>
+            <div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">150+</div>
+              <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Premium Locations</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: "AI-Powered Discovery", desc: "Just type what you want, and our Gemini-powered engine finds the perfect match instantly.", icon: <Sparkles className="text-blue-400 w-6 h-6" /> },
+              { title: "Verified Premium", desc: "Every property is hand-picked and verified to ensure the highest standards of luxury.", icon: <Shield className="text-purple-400 w-6 h-6" /> },
+              { title: "Seamless Experience", desc: "From immersive galleries to instant contact, designed for the modern homebuyer.", icon: <Zap className="text-emerald-400 w-6 h-6" /> }
+            ].map((feat, i) => (
+              <div key={i} className="group relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl overflow-hidden hover:border-white/20 transition-colors duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-navy-900 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                    {feat.icon}
+                  </div>
+                  <h3 className="text-white font-medium mb-3 tracking-wide text-lg">{feat.title}</h3>
+                  <p className="text-slate-400 font-light text-sm leading-relaxed">{feat.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       )}
 
@@ -491,6 +521,7 @@ const Listings = () => {
                       amenities={listing.amenities}
                       area={listing.area}
                       status={listing.status}
+                      transactionType={listing.transactionType}
                     />
                   </motion.div>
                 ))}

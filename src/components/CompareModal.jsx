@@ -11,16 +11,15 @@ const ALL_AMENITIES = [
 const CompareModal = () => {
   const { isCompareModalOpen, setIsCompareModalOpen, compareList, toggleCompare } = useAppContext();
 
-  if (!isCompareModalOpen) return null;
-
   return (
     <AnimatePresence>
-      <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        exit={{ opacity: 0 }} 
-        className="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-[70] flex items-center justify-center p-4 overflow-y-auto"
-      >
+      {!isCompareModalOpen ? null : (
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          exit={{ opacity: 0 }} 
+          className="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-[70] flex items-center justify-center p-4 overflow-y-auto"
+        >
         <motion.div 
           initial={{ scale: 0.95, opacity: 0, y: 20 }} 
           animate={{ scale: 1, opacity: 1, y: 0 }} 
@@ -118,6 +117,7 @@ const CompareModal = () => {
           </div>
         </motion.div>
       </motion.div>
+      )}
     </AnimatePresence>
   );
 };

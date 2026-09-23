@@ -10,7 +10,7 @@ const AMENITY_ICONS = {
   'Pet Friendly': '🐾', 'Furnished': '🪑'
 };
 
-const PropertyCard = ({ id, image, title, price, location, beds, type, amenities = [], area, status }) => {
+const PropertyCard = ({ id, image, title, price, location, beds, type, amenities = [], area, status, transactionType }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const { savedListings, toggleSaved } = useAppContext();
@@ -22,7 +22,7 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
   }).format(price);
 
   const handleSaveClick = (e) => {
-    e.preventDefault(); // Prevents clicking the Link
+    e.preventDefault();
     toggleSaved({ id, image, title, price, location });
   };
 
@@ -56,6 +56,10 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
     y.set(0);
   };
 
+  const txType = transactionType?.toLowerCase() || status?.toLowerCase();
+  const isRent = txType === 'rent';
+  const isSale = txType === 'sale' || txType === 'buy';
+
   return (
     <Link to={`/listing/${id}`} className="block" style={{ perspective: "1000px" }}>
       <motion.div 
@@ -63,59 +67,69 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="group relative block overflow-hidden rounded-2xl aspect-[4/5] bg-navy-900 border border-white/5 transition-shadow duration-500 hover:shadow-[0_25px_50px_-12px_rgba(59,130,246,0.25)] hover:border-white/20 will-change-transform"
+        className="group relative block overflow-hidden rounded-2xl aspect-[4/5] bg-navy-900 border border-white/5 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.3)] hover:border-white/30 will-change-transform"
       >
       
       {!imgLoaded && !imgError && <div className="absolute inset-0 bg-navy-950 animate-pulse"></div>}
       {imgError || !image ? (
         <div className="absolute inset-0 bg-navy-950 flex items-center justify-center"><span className="text-slate-600 font-bold uppercase tracking-widest text-[10px]">No Image</span></div>
       ) : (
-        <img src={image} alt={title} loading="lazy" onLoad={() => setImgLoaded(true)} onError={() => setImgError(true)} className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110 ${imgLoaded ? 'opacity-80 group-hover:opacity-100' : 'opacity-0'}`} />
+        <img src={image} alt={title} loading="lazy" onLoad={() => setImgLoaded(true)} onError={() => setImgError(true)} className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 ${imgLoaded ? 'opacity-90 group-hover:opacity-100' : 'opacity-0'}`} />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128] via-[#0a1128]/70 to-transparent opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050b14] via-[#0a1128]/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
       
-      <button onClick={handleSaveClick} className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-[#0a1128]/50 backdrop-blur-md border border-white/10 text-white hover:bg-white hover:text-[#0a1128] transition-colors">
+      <button onClick={handleSaveClick} className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-[#0a1128]/40 backdrop-blur-md border border-[#ffffff]/10 text-[#ffffff] hover:bg-[#ffffff] hover:text-[#0a1128] transition-colors shadow-lg">
         <Heart size={16} className={`transition-colors ${isSaved ? 'fill-blue-500 text-blue-500 group-hover:text-blue-500' : ''}`} />
       </button>
       
-      <div className="absolute inset-0 p-6 flex flex-col justify-between z-10 pointer-events-none">
+      <div className="absolute inset-0 p-5 flex flex-col justify-between z-10 pointer-events-none">
         <div className="flex justify-start gap-2">
-          <span className="bg-white/10 backdrop-blur-md border border-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#ffffff] rounded-full">{type}</span>
-          {status && (
-            <span className={`backdrop-blur-md border border-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-full ${status.toLowerCase() === 'available' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
-              {status}
+          {type && (
+            <span className="bg-black/20 backdrop-blur-md border border-[#ffffff]/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#ffffff] rounded-full shadow-sm">
+              {type}
             </span>
           )}
+          {(isRent || isSale) ? (
+            <span className={`backdrop-blur-md border border-[#ffffff]/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm ${isRent ? 'bg-blue-500/80 text-blue-100' : 'bg-green-500/80 text-green-100'}`}>
+              FOR {isRent ? 'RENT' : 'SALE'}
+            </span>
+          ) : status ? (
+            <span className="backdrop-blur-md border border-[#ffffff]/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-full shadow-sm bg-black/20 text-[#e2e8f0]">
+              {status}
+            </span>
+          ) : null}
         </div>
-        <div className="transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
-          <h3 className="text-2xl font-medium text-[#ffffff] mb-2 leading-snug">{title}</h3>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-[#cbd5e1] mb-3 font-light">
-            <span className="flex items-center gap-1.5"><MapPin size={14} className="text-[#94a3b8]" />{location}</span>
-            {(!type.toLowerCase().includes('commercial') && !type.toLowerCase().includes('plot')) && (
-              <span className="flex items-center gap-1.5"><BedDouble size={14} className="text-[#94a3b8]" />{beds} Beds</span>
+        
+        <div className="transform transition-all duration-500 translate-y-6 group-hover:translate-y-0 bg-black/20 backdrop-blur-xl border border-[#ffffff]/10 rounded-2xl p-5 -mx-2 -mb-2 shadow-2xl">
+          <h3 className="text-xl font-medium text-[#ffffff] mb-1.5 leading-snug line-clamp-1 group-hover:text-blue-300 transition-colors">{title}</h3>
+          <div className="flex flex-wrap items-center gap-3 text-xs text-[#cbd5e1] mb-3 font-light">
+            <span className="flex items-center gap-1"><MapPin size={12} className="text-blue-400" />{location}</span>
+            {(!type?.toLowerCase().includes('commercial') && !type?.toLowerCase().includes('plot')) && (
+              <span className="flex items-center gap-1"><BedDouble size={12} className="text-blue-400" />{beds} Beds</span>
             )}
             {area && (
-              <span className="flex items-center gap-1.5"><span className="text-[#94a3b8] text-xs">⛶</span> {area.toLocaleString()} sq.ft</span>
+              <span className="flex items-center gap-1"><span className="text-blue-400 text-[10px]">⛶</span> {area.toLocaleString()} sq.ft</span>
             )}
           </div>
           
-          {/* Amenity preview pills */}
           {previewAmenities.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-3">
+            <div className="flex flex-wrap gap-1.5 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
               {previewAmenities.map(a => (
-                <span key={a} className="text-[10px] bg-white/10 backdrop-blur-sm border border-white/5 text-[#cbd5e1] px-2 py-0.5 rounded-full flex items-center gap-1">
+                <span key={a} className="text-[10px] bg-black/30 border border-[#ffffff]/10 text-[#cbd5e1] px-2 py-0.5 rounded-full flex items-center gap-1">
                   <span>{AMENITY_ICONS[a] || '✦'}</span> {a}
                 </span>
               ))}
               {amenities.length > 3 && (
-                <span className="text-[10px] bg-white/10 backdrop-blur-sm border border-white/5 text-[#cbd5e1] px-2 py-0.5 rounded-full">
+                <span className="text-[10px] bg-black/30 border border-[#ffffff]/10 text-[#cbd5e1] px-2 py-0.5 rounded-full">
                   +{amenities.length - 3}
                 </span>
               )}
             </div>
           )}
           
-          <div className="text-xl font-semibold text-white tracking-tight">{formattedPrice}</div>
+          <div className="text-xl font-semibold text-[#ffffff] tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300 drop-shadow-md">
+            {formattedPrice}
+          </div>
         </div>
       </div>
       </motion.div>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { AnimatePresence, motion } from 'framer-motion';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { AppProvider, useAppContext } from './context/AppContext';
-import { Heart, X, CheckCircle, AlertCircle, Info, Trash2, User, LogOut, LogIn, Sun, Moon } from 'lucide-react';
+import { Heart, X, CheckCircle, AlertCircle, Info, Trash2, User, LogOut, LogIn, Sun, Moon, Menu } from 'lucide-react';
 import Listings from './pages/Listings';
 import PropertyDetail from './pages/PropertyDetail';
 import AdminLogin from './pages/AdminLogin';
@@ -21,6 +21,7 @@ import ListProperty from './pages/ListProperty';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
 import AgentDetail from './pages/AgentDetail';
+import NotFound from './pages/NotFound';
 
 const pageVariants = {
   initial: { opacity: 0, y: 15, filter: 'blur(4px)' },
@@ -34,6 +35,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Listings /></motion.div>} />
+        <Route path="/properties" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Listings /></motion.div>} />
         <Route path="/listing/:id" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><PropertyDetail /></motion.div>} />
         <Route path="/agents" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Agents /></motion.div>} />
         <Route path="/agent/:id" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><AgentDetail /></motion.div>} />
@@ -47,6 +49,7 @@ const AnimatedRoutes = () => {
         <Route path="/login" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><AdminLogin /></motion.div>} />
         <Route path="/dashboard" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><AdminDashboard /></motion.div>} />
         <Route path="/list-property" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><ListProperty /></motion.div>} />
+        <Route path="*" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><NotFound /></motion.div>} />
       </Routes>
     </AnimatePresence>
   );
@@ -150,6 +153,7 @@ const Navbar = () => {
   const { user, isAdmin, logout } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const userInitial = user?.displayName?.charAt(0)?.toUpperCase() || user?.email?.charAt(0)?.toUpperCase() || '?';
 
@@ -168,7 +172,7 @@ const Navbar = () => {
           
           <motion.div variants={navItemVariants} className="hidden lg:flex items-center gap-6">
             <Link to="/" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Home</Link>
-            <Link to="/" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Properties</Link>
+            <Link to="/properties" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Properties</Link>
             <Link to="/projects" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Projects</Link>
             <Link to="/agents" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Agents</Link>
             <Link to="/services" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Services</Link>
@@ -274,8 +278,43 @@ const Navbar = () => {
                 </button>
               )}
             </motion.div>
+
+            {/* Mobile Menu Toggle */}
+            <motion.div variants={navItemVariants} className="lg:hidden">
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-slate-400 hover:text-white p-2 transition-colors"
+                aria-label="Toggle Mobile Menu"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </motion.div>
           </div>
         </motion.div>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="lg:hidden border-t border-white/10 bg-navy-950/95 backdrop-blur-xl overflow-hidden"
+            >
+              <div className="flex flex-col px-4 py-6 space-y-4">
+                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Home</Link>
+                <Link to="/properties" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Properties</Link>
+                <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Projects</Link>
+                <Link to="/agents" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Agents</Link>
+                <Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Services</Link>
+                <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">About</Link>
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Contact</Link>
+                <div className="w-full h-px bg-white/10 my-2"></div>
+                <Link to="/list-property" onClick={() => setIsMobileMenuOpen(false)} className="text-sm font-bold tracking-widest uppercase text-blue-400 hover:text-blue-300 transition-colors">List Property</Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <UserAuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
@@ -315,9 +354,9 @@ const Footer = () => (
       <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-slate-500 font-light">&copy; {new Date().getFullYear()} Estora Real Estate. All rights reserved.</p>
         <div className="flex gap-4 text-slate-500">
-          <button className="hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></button>
-          <button className="hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></button>
-          <button className="hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></button>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
         </div>
       </div>
     </div>

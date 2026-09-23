@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles } from 'lucide-react';
+import { useAppContext } from '../context/AppContext';
 
 const PLACEHOLDER_PROMPTS = [
   'Find me a modern villa in Chennai...',
@@ -11,6 +12,7 @@ const PLACEHOLDER_PROMPTS = [
 ];
 
 const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
+  const { showToast } = useAppContext();
   const [prompt, setPrompt] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [placeholderText, setPlaceholderText] = useState('');
@@ -98,7 +100,11 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
 
     } catch (error) {
       console.error("AI Search failed:", error);
-      alert("AI Search failed. Please try again.");
+      if (showToast) {
+        showToast("AI Search failed. Please try again.", "error");
+      } else {
+        alert("AI Search failed. Please try again.");
+      }
     } finally {
       setIsSearching(false);
       setPrompt('');
@@ -106,18 +112,18 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
   };
 
   return (
-    <div className="relative max-w-3xl mx-auto -mt-8 mb-16 z-20">
-      <div className="bg-navy-900 rounded-full shadow-2xl p-2.5 flex items-center transition-all ring-1 ring-white/10 hover:ring-blue-500/50 focus-within:ring-blue-500/50">
+    <div className="relative max-w-3xl mx-4 sm:mx-auto -mt-8 mb-16 z-20">
+      <div className="bg-navy-900 rounded-full shadow-2xl p-2 md:p-2.5 flex items-center transition-all ring-1 ring-white/10 hover:ring-blue-500/50 focus-within:ring-blue-500/50">
         
-        <div className="pl-6 pr-3 text-blue-400">
+        <div className="pl-4 pr-2 md:pl-6 md:pr-3 text-blue-400">
           <Sparkles size={20} className={isSearching ? "animate-spin" : "animate-pulse"} />
         </div>
 
-        <form onSubmit={handleAiSearch} className="flex-1 flex items-center">
+        <form onSubmit={handleAiSearch} className="flex-1 flex items-center min-w-0">
           <input
             ref={inputRef}
             type="text"
-            className="flex-1 bg-transparent px-2 py-3 text-white placeholder-slate-400 font-light focus:outline-none text-base"
+            className="flex-1 w-full bg-transparent px-1 md:px-2 py-3 text-white placeholder-slate-400 font-light focus:outline-none text-sm md:text-base truncate"
             placeholder={prompt ? '' : `Ask AI: ${placeholderText}${!isFocused && !prompt ? '|' : ''}`}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
@@ -126,16 +132,16 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
             disabled={isSearching}
           />
           {prompt && (
-            <button type="button" onClick={resetFilters} className="px-4 text-xs font-medium text-slate-400 hover:text-white transition-colors">
+            <button type="button" onClick={resetFilters} className="px-2 md:px-4 text-[10px] md:text-xs font-medium text-slate-400 hover:text-white transition-colors shrink-0">
               CLEAR
             </button>
           )}
           <button
             type="submit"
             disabled={isSearching}
-            className="bg-white text-navy-950 font-semibold py-3 px-8 rounded-full hover:bg-slate-200 transition-colors disabled:opacity-50 text-sm tracking-wide"
+            className="bg-white text-navy-950 font-semibold py-2.5 px-4 md:py-3 md:px-8 rounded-full hover:bg-slate-200 transition-colors disabled:opacity-50 text-xs md:text-sm tracking-wide shrink-0 ml-1 md:ml-0"
           >
-            {isSearching ? 'Searching...' : 'Search'}
+            {isSearching ? '...' : 'Search'}
           </button>
         </form>
       </div>

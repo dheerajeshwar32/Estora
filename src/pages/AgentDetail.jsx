@@ -32,6 +32,20 @@ const AGENTS = [
     bio: "Priya focuses exclusively on commercial real estate, helping businesses find the perfect office spaces, retail storefronts, and commercial plots. She is known for her exceptional negotiation skills.",
     reviews: 32,
     activeListings: 8
+  },
+  {
+    id: "a3",
+    name: "Arjun Desai",
+    role: "Residential Property Specialist",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+    experience: "6 Years",
+    languages: ["English", "Hindi", "Telugu"],
+    specialization: "Residential Homes & Plots",
+    phone: "+91 98765 43212",
+    email: "arjun.d@estora.com",
+    bio: "Arjun specializes in residential properties — from cozy apartments for first-time buyers to premium independent houses and gated community plots. He is passionate about helping families find their dream homes with transparent, hassle-free processes.",
+    reviews: 27,
+    activeListings: 10
   }
 ];
 

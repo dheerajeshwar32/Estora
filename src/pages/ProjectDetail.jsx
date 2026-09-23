@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Building, Calendar, CheckCircle2, Ruler, Download, ArrowRight } from 'lucide-react';
 import NeighborhoodStats from '../components/NeighborhoodStats';
+import { useAppContext } from '../context/AppContext';
+import ScheduleTourModal from '../components/ScheduleTourModal';
 
 const PROJECT_DATA = {
   1: {
@@ -30,11 +32,14 @@ const PROJECT_DATA = {
 
 const ProjectDetail = () => {
   const { id } = useParams();
+  const { showToast } = useAppContext();
   const project = PROJECT_DATA[id] || PROJECT_DATA[2]; // Default to 2 if not found
   const [activeTab, setActiveTab] = useState('overview');
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-navy-950 pb-20">
+      <ScheduleTourModal isOpen={isScheduleOpen} onClose={() => setIsScheduleOpen(false)} propertyId={`project-${id}`} />
       {/* Hero Section */}
       <div className="relative h-[60vh] w-full">
         <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
@@ -123,10 +128,16 @@ const ProjectDetail = () => {
               <p className="text-slate-400 text-sm mb-6">Download the brochure or schedule a site visit to learn more.</p>
               
               <div className="space-y-4">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2">
+                <button 
+                  onClick={() => setIsScheduleOpen(true)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
+                >
                   <Calendar size={18} /> Schedule Site Visit
                 </button>
-                <button className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 border border-white/10">
+                <button 
+                  onClick={() => showToast('Brochure download will start shortly.', 'info')}
+                  className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 border border-white/10"
+                >
                   <Download size={18} /> Download Brochure
                 </button>
               </div>

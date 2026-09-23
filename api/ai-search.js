@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     }
 
     // Access the key securely from the server environment (Notice: No VITE_ prefix!)
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
     const systemInstruction = `
@@ -28,7 +28,21 @@ export default async function handler(req, res) {
       Return ONLY a JSON array containing the string IDs of the matching properties. Do not use markdown blocks, just the raw array. Example: ["id1", "id2"]
     `;
 
-    const result = await model.generateContent(systemInstruction);
+    let result;
+    const MAX_RETRIES = 3;
+    
+    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+      try {
+        result = await model.generateContent(systemInstruction);
+        break; // Success, break out of retry loop
+      } catch (error) {
+        if (attempt === MAX_RETRIES - 1) throw error; // Re-throw if out of retries
+        console.warn(`Gemini API error (Attempt ${attempt + 1}/${MAX_RETRIES}). Retrying in ${1000 * Math.pow(2, attempt)}ms...`);
+        // Wait with exponential backoff: 1s, 2s
+        await new Promise(r => setTimeout(r, 1000 * Math.pow(2, attempt)));
+      }
+    }
+
     const responseText = result.response.text().trim();
     
     // Parse the JSON array of IDs returned by Gemini

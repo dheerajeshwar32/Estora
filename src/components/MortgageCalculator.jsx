@@ -78,7 +78,10 @@ const MortgageCalculator = ({ price }) => {
         <div className="bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col justify-center">
           <div className="text-center mb-8">
             <p className="text-sm font-medium text-slate-400 uppercase tracking-widest mb-2">Estimated EMI</p>
-            <div className="text-4xl md:text-5xl font-bold text-blue-400">{formatCurrency(emi)}<span className="text-lg text-slate-500 font-medium">/mo</span></div>
+            <div className="text-3xl sm:text-4xl font-bold text-blue-400 flex flex-wrap justify-center items-baseline gap-1 break-words">
+              {formatCurrency(emi)}
+              <span className="text-sm sm:text-lg text-slate-500 font-medium">/mo</span>
+            </div>
           </div>
           
           <div className="space-y-4">

@@ -1,17 +1,49 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-navy-900: var(--theme-navy-900);
+  --color-navy-950: var(--theme-navy-950);
+  --color-white: var(--theme-white);
+  --color-slate-300: var(--theme-slate-300);
+  --color-slate-400: var(--theme-slate-400);
+  --color-slate-500: var(--theme-slate-500);
+}
+
+:root {
+  /* DARK MODE (Default) - Deep indigo, absolutely no black */
+  --theme-navy-950: #0a1128; 
+  --theme-navy-900: #101c3a;
+  --theme-white: #ffffff;
+  --theme-slate-300: #cbd5e1;
+  --theme-slate-400: #94a3b8;
+  --theme-slate-500: #64748b;
+  --theme-map-filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
+}
+
+:root.light {
+  /* LIGHT MODE - Elegant slate and white */
+  --theme-navy-950: #f1f5f9; 
+  --theme-navy-900: #ffffff; 
+  --theme-white: #0f172a; 
+  --theme-slate-300: #475569;
+  --theme-slate-400: #64748b;
+  --theme-slate-500: #94a3b8;
+  --theme-map-filter: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: #060B19; /* Deep Navy Base */
-  color: #ffffff;
+  background-color: var(--color-navy-950);
+  color: var(--color-white);
 }
 
 /* Premium custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #060B19; }
+::-webkit-scrollbar-track { background: var(--color-navy-950); }
 ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #334155; }

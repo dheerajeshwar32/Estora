@@ -50,8 +50,8 @@ const ProjectDetail = () => {
               <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-blue-500 mb-4 inline-block">
                 {project.status}
               </span>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">{project.name}</h1>
-              <p className="text-lg text-slate-300 flex items-center gap-2"><MapPin size={20}/> {project.location}</p>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 break-words">{project.name}</h1>
+              <p className="text-lg text-slate-300 flex items-center gap-2 break-words"><MapPin size={20} className="shrink-0"/> {project.location}</p>
             </div>
             <div className="bg-navy-900/80 backdrop-blur-md p-6 rounded-3xl border border-white/10 text-center md:text-right">
               <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Starting Price</p>

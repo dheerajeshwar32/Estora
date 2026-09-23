@@ -1068,7 +1068,7 @@ const AdminDashboard = () => {
                           {inq.status === 'new' ? 'New' : 'Contacted'}
                         </span>
                       </div>
-                      <a href={`mailto:${inq.email}`} className="text-sm text-blue-400 hover:text-blue-300 transition-colors">{inq.email}</a>
+                      <a href={`mailto:${inq.email}`} className="text-sm text-blue-400 hover:text-blue-300 transition-colors break-all">{inq.email}</a>
                     </div>
                     <div className="text-right">
                       <p className="text-xs text-slate-500 font-medium">
@@ -1141,7 +1141,7 @@ const AdminDashboard = () => {
                       <p><span className="text-slate-500">Price:</span> ₹{sub.price?.toLocaleString('en-IN')}</p>
                       <p><span className="text-slate-500">Owner:</span> {sub.ownerName}</p>
                       <p><span className="text-slate-500">Phone:</span> {sub.ownerPhone}</p>
-                      <p className="col-span-2"><span className="text-slate-500">Email:</span> {sub.ownerEmail || 'N/A'}</p>
+                      <p className="col-span-2 break-all"><span className="text-slate-500">Email:</span> {sub.ownerEmail || 'N/A'}</p>
                     </div>
 
                     <div className="pt-2">

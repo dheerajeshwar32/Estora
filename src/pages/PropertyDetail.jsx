@@ -213,10 +213,10 @@ const PropertyDetail = () => {
                       <span className="text-xs font-bold text-blue-500 uppercase tracking-widest">{property.propertyType}</span>
                       <button onClick={handleShare} className="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-medium bg-white/5 px-3 py-1 rounded-full"><Share size={12}/> Share</button>
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-medium text-white mb-4 leading-tight">{property.title}</h1>
-                    <p className="text-lg text-slate-400 font-light flex items-center gap-2"><MapPin size={20} /> {property.location}</p>
+                    <h1 className="text-4xl md:text-5xl font-medium text-white mb-4 leading-tight break-words">{property.title}</h1>
+                    <p className="text-lg text-slate-400 font-light flex items-center gap-2 break-words"><MapPin size={20} className="shrink-0" /> {property.location}</p>
                   </div>
-                  <div className="text-3xl md:text-4xl font-semibold text-white tracking-tight">{formattedPrice}</div>
+                  <div className="text-3xl md:text-4xl font-semibold text-white tracking-tight break-words">{formattedPrice}</div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 border-y border-white/10 py-8 mb-10 text-slate-300">
@@ -303,7 +303,7 @@ const PropertyDetail = () => {
                 <div className="bg-navy-950 rounded-2xl p-8 border border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
                   <div>
                     <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Listed By</h2>
-                    <p className="text-white text-lg font-medium">{property.agentContact}</p>
+                    <p className="text-white text-lg font-medium break-all">{property.agentContact}</p>
                   </div>
                   <button onClick={() => setIsScheduleTourOpen(true)} className="w-full md:w-auto bg-white text-navy-950 font-bold tracking-wide py-4 px-10 rounded-full hover:bg-slate-200 transition-colors">Schedule a Tour</button>
                 </div>

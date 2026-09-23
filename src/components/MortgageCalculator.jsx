@@ -90,9 +90,13 @@ const MortgageCalculator = ({ price }) => {
               <span className="text-slate-400">Total Interest</span>
               <span className="font-medium text-[color:var(--theme-white)]">{formatCurrency(totalInterest)}</span>
             </div>
+            <div className="flex justify-between items-center py-3 border-b border-white/5">
+              <span className="text-slate-400">Total Payable (Loan)</span>
+              <span className="font-bold text-[color:var(--theme-white)]">{formatCurrency(totalPayment)}</span>
+            </div>
             <div className="flex justify-between items-center py-3">
-              <span className="text-slate-400">Total Cost of Loan</span>
-              <span className="font-bold text-[color:var(--theme-white)]">{formatCurrency(totalPayment + downPayment)}</span>
+              <span className="text-slate-400">Total Property Cost</span>
+              <span className="font-bold text-blue-400">{formatCurrency(totalPayment + downPayment)}</span>
             </div>
           </div>
         </div>

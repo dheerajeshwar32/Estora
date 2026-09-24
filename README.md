@@ -75,4 +75,4 @@ estora/
 ```
 
 ---
-*Built with ❤️ for the Web Development Internship Program*
+*Built by Nagula Dheeraj Eshwar Prudhvi*

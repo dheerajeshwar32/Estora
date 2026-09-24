@@ -32,8 +32,8 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+  const mouseXSpring = useSpring(x, { stiffness: 400, damping: 25 });
+  const mouseYSpring = useSpring(y, { stiffness: 400, damping: 25 });
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
@@ -67,7 +67,7 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="group relative block overflow-hidden rounded-2xl aspect-[4/5] bg-navy-900 border border-white/5 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.3)] hover:border-white/30 will-change-transform"
+        className="group relative block overflow-hidden rounded-2xl aspect-[4/5] bg-navy-900 border border-white/5 transition-[box-shadow,border-color] duration-500 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.3)] hover:border-white/30 will-change-transform"
       >
       
       {!imgLoaded && !imgError && <div className="absolute inset-0 bg-navy-950 animate-pulse"></div>}

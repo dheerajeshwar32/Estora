@@ -26,10 +26,10 @@ export const SpotlightWrapper = ({ children, className = '' }) => {
     >
       {!shouldReduceMotion && (
         <motion.div
-          className="pointer-events-none absolute -inset-px z-10 transition-opacity duration-300 rounded-inherit"
+          className="pointer-events-none absolute -inset-px z-50 transition-opacity duration-300 rounded-2xl mix-blend-overlay"
           style={{
             opacity,
-            background: useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, rgba(255,255,255,0.15), transparent 40%)`,
+            background: useMotionTemplate`radial-gradient(800px circle at ${mx}px ${my}px, rgba(255,255,255,0.8), transparent 40%)`,
           }}
         />
       )}
@@ -37,3 +37,4 @@ export const SpotlightWrapper = ({ children, className = '' }) => {
     </div>
   );
 };
+

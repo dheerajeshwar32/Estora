@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, BedDouble, Loader2, Sparkles, Shield, Zap, Search, ChevronDown } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
 import AiSearch from '../components/AiSearch';
+import { MagneticButton } from '../components/MagneticButton';
 
 const PAGE_SIZE = 12;
 
@@ -530,20 +531,22 @@ const Listings = () => {
               {/* Load More Button */}
               {hasMore && !aiResults && (
                 <div className="flex justify-center mt-12">
-                  <button
-                    onClick={() => fetchListings(true)}
-                    disabled={loadingMore}
-                    className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-bold tracking-wide hover:bg-white/10 hover:border-white/20 transition-all disabled:opacity-50"
-                  >
-                    {loadingMore ? (
-                      <>
-                        <Loader2 size={18} className="animate-spin" />
-                        Loading...
-                      </>
-                    ) : (
-                      'Load More Properties'
-                    )}
-                  </button>
+                  <MagneticButton>
+                    <button
+                      onClick={() => fetchListings(true)}
+                      disabled={loadingMore}
+                      className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-bold tracking-wide hover:bg-white/10 hover:border-white/20 transition-all disabled:opacity-50"
+                    >
+                      {loadingMore ? (
+                        <>
+                          <Loader2 size={18} className="animate-spin" />
+                          Loading...
+                        </>
+                      ) : (
+                        'Load More Properties'
+                      )}
+                    </button>
+                  </MagneticButton>
                 </div>
               )}
             </>

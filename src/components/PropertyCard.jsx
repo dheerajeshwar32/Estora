@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, BedDouble, Heart } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { SpotlightWrapper } from './SpotlightWrapper';
 
 const AMENITY_ICONS = {
   'Pool': '🏊', 'Gym': '🏋️', 'Parking': '🅿️', 'Balcony': '🌇',
@@ -69,6 +70,7 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="group relative block overflow-hidden rounded-2xl aspect-[4/5] bg-navy-900 border border-white/5 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.3)] hover:border-white/30 will-change-transform"
       >
+        <SpotlightWrapper className="rounded-2xl">
       
       {!imgLoaded && !imgError && <div className="absolute inset-0 bg-navy-950 animate-pulse"></div>}
       {imgError || !image ? (
@@ -132,6 +134,7 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
           </div>
         </div>
       </div>
+      </SpotlightWrapper>
       </motion.div>
     </Link>
   );

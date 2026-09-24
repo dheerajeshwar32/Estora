@@ -12,6 +12,7 @@ import ScheduleTourModal from '../components/ScheduleTourModal';
 import NeighborhoodStats from '../components/NeighborhoodStats';
 import FAQAccordion from '../components/FAQAccordion';
 import SEO from '../components/SEO';
+import { MagneticButton } from '../components/MagneticButton';
 
 const AMENITY_ICONS = {
   'Pool': '🏊', 'Gym': '🏋️', 'Parking': '🅿️', 'Balcony': '🌇',
@@ -305,7 +306,9 @@ const PropertyDetail = () => {
                     <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Listed By</h2>
                     <p className="text-white text-lg font-medium break-all">{property.agentContact}</p>
                   </div>
-                  <button onClick={() => setIsScheduleTourOpen(true)} className="w-full md:w-auto bg-white text-navy-950 font-bold tracking-wide py-4 px-10 rounded-full hover:bg-slate-200 transition-colors">Schedule a Tour</button>
+                  <MagneticButton>
+                    <button onClick={() => setIsScheduleTourOpen(true)} className="w-full md:w-auto bg-white text-navy-950 font-bold tracking-wide py-4 px-10 rounded-full hover:bg-slate-200 transition-colors">Schedule a Tour</button>
+                  </MagneticButton>
                 </div>
 
               </div>

@@ -1,46 +1,38 @@
-# React + Vite
-# ESTORA. Premium Real Estate Discover Platform
+# ESTORA. Premium Real Estate Discovery Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-A high-performance, modern web application built for property discovery, comparison, and lead generation. This project was developed as a comprehensive Web Development Internship submission, exceeding all standard and advanced PDR (Project Design Requirements).
+![ESTORA Cover](https://github.com/dheerajeshwar32/Estora/blob/main/public/favicon.svg)
 
-Currently, two official plugins are available:
-![ESTORA Cover](https://github.com/dheerajeshwar/estora/blob/main/public/cover-placeholder.png)
+A high-performance, modern web application built for luxury property discovery, comparison, and lead generation. This project was developed as a comprehensive Web Development Internship submission, exceeding all standard and advanced PDR (Project Design Requirements).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-## 🎯 Project Objective
-To develop a professional, responsive Real Estate Website simulating a real-world property agency. The platform seamlessly handles property search, filtering, detailed galleries, dynamic map integrations, AI-assisted onboarding, and high-conversion site-visit scheduling.
+## 🚀 Project Objective
+To develop a professional, responsive Real Estate Website simulating a real-world premium property agency. The platform seamlessly handles property search, filtering, detailed galleries, dynamic map integrations, AI-assisted natural language search, and high-conversion site-visit scheduling.
 
-## React Compiler
-## 🌟 Core Features
-- **Modern UI/UX & Responsive Design**: Pixel-perfect layouts using Tailwind CSS with deep dark-mode support and custom CSS variables for effortless theme switching. Includes Apple-style 3D hover tilt physics via Framer Motion.
-- **Advanced Filtering & AI Search**: Multi-criteria search with dynamic sorting. Features an animated AI search typewriter onboarding effect.
-- **Advanced Property Comparison**: Select up to 3 saved properties and compare them side-by-side in a dedicated modal (Advanced PDR Feature).
+## 💎 Core Features
+- **Modern UI/UX & Responsive Design**: Pixel-perfect layouts using Tailwind CSS v4 with deep dark-mode support and custom CSS variables. Includes ultra-premium Apple-style 3D hover tilt physics and magnetic buttons via Framer Motion.
+- **AI-Powered Semantic Search**: Integrated Gemini AI natural language search. Users can type "I want a 3BHK in Mumbai under 5 crores with a pool" and the AI instantly filters the database.
+- **Advanced Property Comparison**: Select up to 3 saved properties and compare their specifications, amenities, and pricing side-by-side in a dedicated modal (Advanced PDR Feature).
 - **Interactive Map Integration**: Live Google Maps iframe dynamically pinpointing property locations with adaptive CSS filters for dark/light modes.
-- **Cinematic Image Lightbox**: Fully swipeable (framer-motion drag physics) fullscreen gallery for property media.
+- **Cinematic Image Lightbox**: Fully swipeable (Framer Motion drag physics) fullscreen gallery for property media.
 - **EMI Calculator**: Dynamic JavaScript mortgage calculator integrated directly into property detail pages.
 - **Lead Generation & Booking**: Multi-step animated scheduling modal allowing users to book in-person or virtual tours directly to Firestore.
 - **Agent Dashboard**: A secure, authenticated admin panel built on Firebase to manage listings, upload images, and analyze inquiries via custom CSS bar charts.
 - **Saved Wishlist**: Persisted saved properties utilizing LocalStorage and Firebase Cloud sync.
 - **Interactive FAQ Accordion**: Expandable FAQ sections addressing common buyer queries.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 ## 🛠️ Technologies Used
-* **Frontend**: React 18 (Vite), React Router DOM
+* **Frontend**: React 19 (Vite), React Router DOM v7
 * **Styling**: Tailwind CSS v4, Custom CSS Variables
 * **Animations**: Framer Motion
 * **Icons**: Lucide React
 * **Backend / Database**: Firebase (Firestore, Authentication, Storage)
-* **Hosting**: Vercel / Firebase Hosting
+* **AI Integration**: Google Gemini API (via Vercel Serverless Functions)
+* **Hosting**: Vercel
 
-## Expanding the Oxlint configuration
-## 🚀 Installation & Setup
+## 💻 Installation & Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/estora.git
+   git clone https://github.com/dheerajeshwar32/Estora.git
    cd estora
    ```
 
@@ -50,7 +42,7 @@ If you are developing a production application, we recommend using TypeScript wi
    ```
 
 3. **Configure Environment Variables**:
-   Create a `.env` file in the root directory and add your Firebase credentials:
+   Create a `.env` file in the root directory and add your Firebase and Gemini credentials:
    ```env
    VITE_FIREBASE_API_KEY=your_api_key
    VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
@@ -58,6 +50,7 @@ If you are developing a production application, we recommend using TypeScript wi
    VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
    VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
    VITE_FIREBASE_APP_ID=your_app_id
+   VITE_GEMINI_API_KEY=your_gemini_api_key
    ```
 
 4. **Run the Development Server**:
@@ -65,7 +58,7 @@ If you are developing a production application, we recommend using TypeScript wi
    npm run dev
    ```
 
-## 📂 Project Folder Structure
+## 📁 Project Folder Structure
 ```text
 estora/
 ├── src/
@@ -74,16 +67,12 @@ estora/
 │   ├── pages/            # Core views (Listings, Detail, Admin)
 │   ├── App.jsx           # Routing & Layout Wrapper
 │   ├── index.css         # Tailwind directives & Theme Variables
-│   └── firebaseConfig.js # Firebase initialization
+│   ├── firebaseConfig.js # Firebase initialization
+├── api/                  # Vercel Serverless Functions (ai-search.js)
 ├── public/               # Static assets
 ├── index.html            # Entry point
 └── package.json          # Dependencies
 ```
-
-## 📈 Future Improvements
-* **Mapbox Integration**: Replace iframe maps with Mapbox GL JS for custom cluster rendering.
-* **3D Virtual Tours**: Integrate Matterport iframes for properties supporting VR.
-* **Stripe Integration**: Allow users to pay a refundable deposit to reserve a property tour.
 
 ---
 *Built with ❤️ for the Web Development Internship Program*

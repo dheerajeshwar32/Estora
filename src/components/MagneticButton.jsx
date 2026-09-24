@@ -33,3 +33,4 @@ export const MagneticButton = ({ children, className = '' }) => {
     </motion.div>
   );
 };
+

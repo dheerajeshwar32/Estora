@@ -23,7 +23,7 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
 
   const handleSaveClick = (e) => {
     e.preventDefault();
-    toggleSaved({ id, image, title, price, location });
+    toggleSaved({ id, image, title, price, location, propertyType: type, bedrooms: beds, amenities, area, status, transactionType });
   };
 
   const previewAmenities = amenities.slice(0, 3);

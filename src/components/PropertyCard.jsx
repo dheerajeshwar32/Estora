@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, BedDouble, Heart } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
-import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const AMENITY_ICONS = {
   'Pool': '🏊', 'Gym': '🏋️', 'Parking': '🅿️', 'Balcony': '🌇',
@@ -32,12 +32,6 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
-  // Spotlight
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const spotlightOpacity = useMotionValue(0);
-  const spotlightGradient = useMotionTemplate`radial-gradient(800px circle at ${mx}px ${my}px, rgba(255,255,255,0.6), transparent 40%)`;
-  
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
@@ -51,22 +45,15 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
     const height = rect.height;
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
     x.set(xPct);
     y.set(yPct);
-    
-    mx.set(mouseX);
-    my.set(mouseY);
   };
-
-  const handleMouseEnter = () => spotlightOpacity.set(1);
 
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
-    spotlightOpacity.set(0);
   };
 
   const txType = transactionType?.toLowerCase() || status?.toLowerCase();
@@ -79,19 +66,10 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={handleMouseEnter}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="group relative block overflow-hidden rounded-2xl aspect-[4/5] bg-navy-900 border border-white/5 transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.3)] hover:border-white/30 will-change-transform"
       >
-
       
-        <motion.div
-          className="pointer-events-none absolute -inset-px z-50 transition-opacity duration-300 rounded-2xl mix-blend-overlay"
-          style={{
-            opacity: spotlightOpacity,
-            background: spotlightGradient,
-          }}
-        />
       {!imgLoaded && !imgError && <div className="absolute inset-0 bg-navy-950 animate-pulse"></div>}
       {imgError || !image ? (
         <div className="absolute inset-0 bg-navy-950 flex items-center justify-center"><span className="text-slate-600 font-bold uppercase tracking-widest text-[10px]">No Image</span></div>
@@ -154,7 +132,6 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
           </div>
         </div>
       </div>
-
       </motion.div>
     </Link>
   );

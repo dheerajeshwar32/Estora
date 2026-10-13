@@ -50,13 +50,13 @@ const ListProperty = () => {
         price: Number(formData.price),
         bedrooms: formData.propertyType === 'plot' || formData.propertyType === 'commercial' ? 0 : Number(formData.bedrooms),
         bathrooms: formData.propertyType === 'plot' ? 0 : Number(formData.bathrooms),
-        status: 'new', // new, reviewed
+        status: 'new', 
         createdAt: serverTimestamp()
       });
 
       showToast('Property submitted successfully! Our team will review it shortly.', 'success');
       
-      // Reset form
+      
       setFormData({
         title: '', description: '', price: '', location: '',
         bedrooms: '', bathrooms: '', propertyType: 'apartment',
@@ -99,7 +99,7 @@ const ListProperty = () => {
         >
           <form onSubmit={handleSubmit} className="space-y-8 text-sm">
             
-            {/* Owner Details Section */}
+            {}
             <div>
               <h2 className="text-lg font-medium text-white mb-4 flex items-center gap-2 border-b border-white/10 pb-2">
                 <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs">1</span>
@@ -121,7 +121,7 @@ const ListProperty = () => {
               </div>
             </div>
 
-            {/* Property Details Section */}
+            {}
             <div>
               <h2 className="text-lg font-medium text-white mb-4 flex items-center gap-2 border-b border-white/10 pb-2 mt-8">
                 <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs">2</span>
@@ -189,7 +189,7 @@ const ListProperty = () => {
               </div>
             </div>
 
-            {/* Description & Media */}
+            {}
             <div>
               <h2 className="text-lg font-medium text-white mb-4 flex items-center gap-2 border-b border-white/10 pb-2 mt-8">
                 <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs">3</span>

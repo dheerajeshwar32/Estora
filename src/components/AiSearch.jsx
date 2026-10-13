@@ -31,25 +31,25 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
     let timeout;
 
     if (!isDeleting) {
-      // Typing forward
+      
       if (charIndex < currentPrompt.length) {
         timeout = setTimeout(() => {
           setPlaceholderText(currentPrompt.slice(0, charIndex + 1));
           setCharIndex(prev => prev + 1);
-        }, 60 + Math.random() * 40); // Slightly randomized for natural feel
+        }, 60 + Math.random() * 40); 
       } else {
-        // Pause at end before deleting
+        
         timeout = setTimeout(() => setIsDeleting(true), 2000);
       }
     } else {
-      // Deleting
+      
       if (charIndex > 0) {
         timeout = setTimeout(() => {
           setPlaceholderText(currentPrompt.slice(0, charIndex - 1));
           setCharIndex(prev => prev - 1);
         }, 30);
       } else {
-        // Move to next prompt
+        
         setIsDeleting(false);
         setPromptIndex(prev => (prev + 1) % PLACEHOLDER_PROMPTS.length);
       }
@@ -58,7 +58,7 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, promptIndex, prompt, isFocused]);
 
-  // Reset animation when focus changes
+  
   useEffect(() => {
     if (!isFocused && !prompt) {
       setCharIndex(0);
@@ -123,6 +123,7 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
           <input
             ref={inputRef}
             type="text"
+            aria-label="Ask AI about properties"
             className="flex-1 w-full bg-transparent px-1 md:px-2 py-3 text-white placeholder-slate-400 font-light focus:outline-none text-sm md:text-base truncate"
             placeholder={prompt ? '' : `Ask AI: ${placeholderText}${!isFocused && !prompt ? '|' : ''}`}
             value={prompt}
@@ -132,7 +133,7 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
             disabled={isSearching}
           />
           {prompt && (
-            <button type="button" onClick={resetFilters} className="px-2 md:px-4 text-[10px] md:text-xs font-medium text-slate-400 hover:text-white transition-colors shrink-0">
+            <button type="button" onClick={resetFilters} aria-label="Clear AI search" className="px-2 md:px-4 text-[10px] md:text-xs font-medium text-slate-400 hover:text-white transition-colors shrink-0">
               CLEAR
             </button>
           )}

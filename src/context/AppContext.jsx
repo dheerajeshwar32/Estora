@@ -23,7 +23,7 @@ export const AppProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Apply theme to HTML tag
+  
   useEffect(() => {
     const html = document.documentElement;
     if (theme === 'light') {
@@ -38,19 +38,19 @@ export const AppProvider = ({ children }) => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  // Listen for auth state to sync saved listings
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
       if (user) {
-        // User just logged in — load their saved listings from Firestore
+        
         try {
           const userDocRef = doc(db, 'users', user.uid);
           const userSnap = await getDoc(userDocRef);
           
           if (userSnap.exists() && userSnap.data().savedListings) {
             const cloudSaved = userSnap.data().savedListings;
-            // Merge local saved with cloud saved (de-duplicate by id)
+            
             const localSaved = JSON.parse(localStorage.getItem('estora_saved') || '[]');
             const merged = [...cloudSaved];
             localSaved.forEach(local => {
@@ -60,7 +60,7 @@ export const AppProvider = ({ children }) => {
             });
             setSavedListings(merged);
           } else {
-            // No cloud data — push local to cloud
+            
             const localSaved = JSON.parse(localStorage.getItem('estora_saved') || '[]');
             if (localSaved.length > 0) {
               await setDoc(userDocRef, { savedListings: localSaved }, { merge: true });
@@ -74,7 +74,7 @@ export const AppProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // Persist to localStorage always, and to Firestore when logged in
+  
   useEffect(() => {
     localStorage.setItem('estora_saved', JSON.stringify(savedListings));
     

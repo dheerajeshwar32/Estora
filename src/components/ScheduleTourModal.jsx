@@ -40,7 +40,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
       setIsSending(false);
       onClose();
       showToast('Tour request sent successfully!', 'success');
-      setTimeout(() => setStep(1), 500); // reset after close animation
+      setTimeout(() => setStep(1), 500); 
     } catch (error) {
       console.error('Failed to schedule tour:', error);
       setIsSending(false);
@@ -48,11 +48,11 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
     }
   };
 
-  // Generate next 14 days
+  
   const today = new Date();
   const upcomingDates = Array.from({ length: 14 }).map((_, i) => {
     const d = new Date(today);
-    d.setDate(today.getDate() + i + 1); // start from tomorrow
+    d.setDate(today.getDate() + i + 1); 
     return d;
   });
 
@@ -63,7 +63,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
       {isOpen && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-[60] flex items-center justify-center p-4">
           <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-navy-900 border border-white/10 p-8 rounded-3xl w-full max-w-lg shadow-2xl relative overflow-hidden">
-          <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-10 bg-navy-950 p-2 rounded-full"><X size={20}/></button>
+          <button onClick={onClose} aria-label="Close tour scheduling modal" className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-10 bg-navy-950 p-2 rounded-full"><X size={20}/></button>
           
           <div className="mb-8">
             <h3 className="text-2xl font-medium text-[color:var(--theme-white)] mb-2">Schedule a Tour</h3>
@@ -77,13 +77,13 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
               {step === 1 ? (
                 <motion.form key="step1" initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} onSubmit={handleNext} className="space-y-6">
                   
-                  {/* Tour Type */}
+                  {}
                   <div className="flex gap-4 p-1 bg-navy-950 rounded-xl">
                     <button type="button" onClick={() => setFormData({...formData, tourType: 'in-person'})} className={`flex-1 py-2 text-sm font-medium rounded-lg transition-colors ${formData.tourType === 'in-person' ? 'bg-white text-navy-950 shadow-sm' : 'text-slate-400 hover:text-white'}`}>In-Person</button>
                     <button type="button" onClick={() => setFormData({...formData, tourType: 'virtual'})} className={`flex-1 py-2 text-sm font-medium rounded-lg transition-colors ${formData.tourType === 'virtual' ? 'bg-white text-navy-950 shadow-sm' : 'text-slate-400 hover:text-white'}`}>Virtual (Video)</button>
                   </div>
 
-                  {/* Date Selector (Horizontal Scroll) */}
+                  {}
                   <div>
                     <label className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-3"><Calendar size={16}/> Select Date</label>
                     <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide snap-x">
@@ -105,7 +105,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
                     </div>
                   </div>
 
-                  {/* Time Selector */}
+                  {}
                   <div>
                     <label className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-3"><Clock size={16}/> Select Time</label>
                     <div className="grid grid-cols-3 gap-3">

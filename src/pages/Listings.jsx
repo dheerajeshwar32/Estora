@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { collection, getDocs, orderBy, query, limit, startAfter } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, BedDouble, Loader2, Sparkles, Shield, Zap, Search, ChevronDown } from 'lucide-react';
+import { MapPin, BedDouble, Loader2, Sparkles, Shield, Zap } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
 import AiSearch from '../components/AiSearch';
 import { MagneticButton } from '../components/MagneticButton';
@@ -22,16 +22,6 @@ const SkeletonCard = () => (
     <div className="w-1/3 h-6 bg-white/10 rounded-lg"></div>
   </div>
 );
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
-};
 
 const Listings = () => {
   const [listings, setListings] = useState([]);
@@ -53,12 +43,12 @@ const Listings = () => {
   const [aiResults, setAiResults] = useState(null);
   const [sortBy, setSortBy] = useState('newest');
 
-  // Dynamic page title
+  
   useEffect(() => {
     document.title = 'Estora — Discover Premium Properties';
   }, []);
 
-  // Initial fetch with pagination
+  
   const fetchListings = useCallback(async (isLoadMore = false) => {
     try {
       if (isLoadMore) setLoadingMore(true);
@@ -96,7 +86,7 @@ const Listings = () => {
 
   useEffect(() => {
     fetchListings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   const toggleAmenity = (amenity) => {
@@ -277,7 +267,7 @@ const Listings = () => {
         </div>
       </div>
 
-      {/* Reset Filters */}
+      {}
       {(locationStr || minPrice || maxPrice || minArea || maxArea || bedrooms || propertyType || transactionType || selectedAmenities.length > 0) && (
         <button onClick={resetAllFilters} className="w-full text-xs font-bold tracking-widest uppercase text-slate-400 hover:text-white py-3 border border-white/10 rounded-xl hover:border-white/20 transition-all">
           Clear All Filters
@@ -289,28 +279,16 @@ const Listings = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 md:pt-8 md:pb-12">
       
-      {/* Landing Hero Section */}
+      {}
       <div className="relative pt-10 pb-16 md:pt-14 md:pb-20 text-center overflow-hidden rounded-3xl mb-4">
-        {/* Animated Gradient Background */}
+        {}
         <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
           <div className="absolute inset-0 bg-navy-950" />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.4, 0.2],
-              rotate: [0, 90, 0]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-[50%] -left-[20%] w-[70%] h-[150%] bg-blue-500/30 blur-[120px] rounded-full"
+          <div 
+            className="absolute -top-[50%] -left-[20%] w-[70%] h-[150%] bg-blue-500/30 blur-[120px] rounded-full animate-blob-1"
           />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.5, 1],
-              opacity: [0.15, 0.3, 0.15],
-              x: [0, 100, 0]
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[20%] -right-[20%] w-[60%] h-[120%] bg-purple-500/20 blur-[120px] rounded-full"
+          <div 
+            className="absolute top-[20%] -right-[20%] w-[60%] h-[120%] bg-purple-500/20 blur-[120px] rounded-full animate-blob-2"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/80 to-navy-950 z-0" />
         </div>
@@ -352,7 +330,7 @@ const Listings = () => {
 
       <AiSearch listings={listings} onSearchResults={setAiResults} resetFilters={resetAllFilters} />
       
-      {/* Premium Features Highlight */}
+      {}
       {!locationStr && !minPrice && !maxPrice && !bedrooms && !propertyType && selectedAmenities.length === 0 && !aiResults && (
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -433,7 +411,7 @@ const Listings = () => {
               >
                 <div className="flex justify-between items-center mb-8">
                   <h2 className="text-sm font-bold tracking-widest uppercase text-slate-400">Refine Search</h2>
-                  <button onClick={() => setIsMobileFiltersOpen(false)} className="text-slate-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
+                  <button onClick={() => setIsMobileFiltersOpen(false)} aria-label="Close filters" className="text-slate-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -528,7 +506,7 @@ const Listings = () => {
                 ))}
               </div>
 
-              {/* Load More Button */}
+              {}
               {hasMore && !aiResults && (
                 <div className="flex justify-center mt-12">
                   <MagneticButton>

@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 @theme {
   --color-navy-900: var(--theme-navy-900);
@@ -11,8 +10,7 @@
 }
 
 :root {
-  /* DARK MODE (Default) - Deep indigo, absolutely no black */
-  --theme-navy-950: #0a1128; 
+    --theme-navy-950: #0a1128; 
   --theme-navy-900: #101c3a;
   --theme-white: #ffffff;
   --theme-slate-300: #cbd5e1;
@@ -22,8 +20,7 @@
 }
 
 :root.light {
-  /* LIGHT MODE - Elegant slate and white */
-  --theme-navy-950: #f1f5f9; 
+    --theme-navy-950: #f1f5f9; 
   --theme-navy-900: #ffffff; 
   --theme-white: #0f172a; 
   --theme-slate-300: #475569;
@@ -42,8 +39,27 @@ body {
   color: var(--color-white);
 }
 
-/* Premium custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--color-navy-950); }
 ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+@keyframes pulse-blob-1 {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.2; }
+  50% { transform: scale(1.15) rotate(45deg); opacity: 0.35; }
+}
+
+@keyframes pulse-blob-2 {
+  0%, 100% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.15; }
+  50% { transform: scale(1.25) translate3d(40px, 0, 0); opacity: 0.25; }
+}
+
+.animate-blob-1 {
+  animation: pulse-blob-1 20s infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+.animate-blob-2 {
+  animation: pulse-blob-2 15s infinite ease-in-out;
+  will-change: transform, opacity;
+}

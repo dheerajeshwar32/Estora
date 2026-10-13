@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 
 const SEO = ({ title, description, url, image }) => {
   useEffect(() => {
-    // Basic Meta
+    
     document.title = title || 'Estora | Premium Real Estate';
     
-    // Description
+    
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -14,7 +14,7 @@ const SEO = ({ title, description, url, image }) => {
     }
     metaDesc.content = description || 'Discover premium real estate, luxury villas, and commercial properties with Estora.';
 
-    // Canonical URL
+    
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -23,7 +23,7 @@ const SEO = ({ title, description, url, image }) => {
     }
     canonical.href = url || window.location.href;
 
-    // Open Graph
+    
     const updateOG = (property, content) => {
       let tag = document.querySelector(`meta[property="${property}"]`);
       if (!tag) {

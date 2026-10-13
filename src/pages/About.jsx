@@ -64,7 +64,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Testimonials Section */}
+      {}
       <div className="mt-24">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">What Our Clients Say</h2>

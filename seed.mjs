@@ -116,7 +116,7 @@ async function seedData() {
   try {
     const propsRef = collection(db, "listings");
     
-    // Delete existing
+    
     console.log("Fetching existing properties to clear...");
     const snapshot = await getDocs(propsRef);
     let deleted = 0;
@@ -126,7 +126,7 @@ async function seedData() {
     }
     console.log(`Deleted ${deleted} old properties.`);
 
-    // Add new
+    
     console.log("Seeding new rich properties...");
     let added = 0;
     for (const prop of newProperties) {

@@ -5,7 +5,7 @@ import { auth, googleProvider } from '../firebaseConfig';
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
-// Set your admin email(s) here — only these users see the Admin button
+
 const ADMIN_EMAILS = ['dheerajeshwarnagula@gmail.com'];
 
 export const AuthProvider = ({ children }) => {
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   const signupWithEmail = async (name, email, password) => {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(result.user, { displayName: name });
-    // Force a refresh of the user object so displayName is available immediately
+    
     setUser({ ...result.user, displayName: name });
     return result.user;
   };

@@ -33,7 +33,7 @@ const NeighborhoodStats = ({ location, type = '' }) => {
   return (
     <div className="bg-navy-950 rounded-3xl p-8 border border-white/5 mb-12">
       <div className="flex flex-col md:flex-row gap-12">
-        {/* Left: Stats */}
+        {}
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
@@ -68,9 +68,9 @@ const NeighborhoodStats = ({ location, type = '' }) => {
           </div>
         </div>
 
-        {/* Right: Premium Map Placeholder */}
+        {}
         <div className="w-full md:w-1/2 h-[300px] relative rounded-2xl overflow-hidden border border-white/10 group">
-          {/* Real Interactive Map via iframe */}
+          {}
           <iframe 
             title="Property Location"
             src={`https://maps.google.com/maps?q=${encodeURIComponent(location)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
@@ -82,10 +82,10 @@ const NeighborhoodStats = ({ location, type = '' }) => {
             className="absolute inset-0 z-0"
           ></iframe>
           
-          {/* Subtle Overlay to make it look premium and blend with the UI */}
+          {}
           <div className="absolute inset-0 bg-blue-500/5 pointer-events-none z-0" />
 
-          {/* Location Tag */}
+          {}
           <div className="absolute bottom-4 left-4 right-4 bg-navy-950/80 backdrop-blur-md border border-white/10 rounded-xl p-4 transform transition-transform group-hover:-translate-y-1">
             <div className="flex items-center justify-between">
               <div>

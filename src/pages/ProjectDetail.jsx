@@ -33,14 +33,14 @@ const PROJECT_DATA = {
 const ProjectDetail = () => {
   const { id } = useParams();
   const { showToast } = useAppContext();
-  const project = PROJECT_DATA[id] || PROJECT_DATA[2]; // Default to 2 if not found
+  const project = PROJECT_DATA[id] || PROJECT_DATA[2]; 
   const [activeTab, setActiveTab] = useState('overview');
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-navy-950 pb-20">
       <ScheduleTourModal isOpen={isScheduleOpen} onClose={() => setIsScheduleOpen(false)} propertyId={`project-${id}`} />
-      {/* Hero Section */}
+      {}
       <div className="relative h-[60vh] w-full">
         <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent" />
@@ -65,7 +65,7 @@ const ProjectDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           
           <div className="lg:col-span-2 space-y-12">
-            {/* Quick Specs */}
+            {}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { label: 'Developer', value: project.developer, icon: Building },
@@ -81,13 +81,13 @@ const ProjectDetail = () => {
               ))}
             </div>
 
-            {/* Overview */}
+            {}
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">Project Overview</h2>
               <p className="text-slate-300 leading-relaxed font-light text-lg">{project.overview}</p>
             </div>
 
-            {/* Construction Updates */}
+            {}
             {project.status !== 'Completed' && (
               <div className="bg-navy-900 border border-white/5 rounded-3xl p-8">
                 <h2 className="text-2xl font-bold text-white mb-6">Construction Updates</h2>
@@ -117,11 +117,11 @@ const ProjectDetail = () => {
               </div>
             )}
 
-            {/* Map */}
+            {}
             <NeighborhoodStats location={project.location} type={project.config} />
           </div>
 
-          {/* Sidebar CTA */}
+          {}
           <div className="space-y-6">
             <div className="bg-navy-900 border border-white/5 rounded-3xl p-8 sticky top-24">
               <h3 className="text-xl font-bold text-white mb-2">Interested in {project.name}?</h3>

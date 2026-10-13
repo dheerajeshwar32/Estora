@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Award, MessageSquare } from 'lucide-react';
 import SEO from '../components/SEO';
 
-// Mock DB since agents are mostly static/fictional for this project
+
 const AGENTS = [
   {
     id: "a1",
@@ -71,7 +71,7 @@ const AgentDetail = () => {
         </Link>
         
         <div className="bg-navy-900 rounded-3xl border border-white/5 overflow-hidden flex flex-col md:flex-row">
-          {/* Agent Image */}
+          {}
           <div className="w-full md:w-1/3 bg-navy-950 p-8 flex flex-col items-center justify-center border-r border-white/5">
             <div className="w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-white/10">
               <img src={agent.image} alt={agent.name} className="w-full h-full object-cover" />
@@ -80,19 +80,19 @@ const AgentDetail = () => {
             <p className="text-sm text-blue-400 font-medium mb-6 text-center">{agent.role}</p>
             
             <div className="flex gap-4 w-full">
-              <a href={`tel:${agent.phone}`} className="flex-1 bg-white/5 hover:bg-white/10 transition-colors border border-white/10 rounded-xl py-3 flex justify-center items-center text-white">
+              <a href={`tel:${agent.phone}`} aria-label={`Call ${agent.name}`} className="flex-1 bg-white/5 hover:bg-white/10 transition-colors border border-white/10 rounded-xl py-3 flex justify-center items-center text-white">
                 <Phone size={18} />
               </a>
-              <a href={`mailto:${agent.email}`} className="flex-1 bg-white/5 hover:bg-white/10 transition-colors border border-white/10 rounded-xl py-3 flex justify-center items-center text-white">
+              <a href={`mailto:${agent.email}`} aria-label={`Email ${agent.name}`} className="flex-1 bg-white/5 hover:bg-white/10 transition-colors border border-white/10 rounded-xl py-3 flex justify-center items-center text-white">
                 <Mail size={18} />
               </a>
-              <button className="flex-1 bg-blue-500 hover:bg-blue-600 transition-colors rounded-xl py-3 flex justify-center items-center text-white shadow-lg shadow-blue-500/20">
+              <button aria-label={`Message ${agent.name}`} className="flex-1 bg-blue-500 hover:bg-blue-600 transition-colors rounded-xl py-3 flex justify-center items-center text-white shadow-lg shadow-blue-500/20">
                 <MessageSquare size={18} />
               </button>
             </div>
           </div>
 
-          {/* Agent Details */}
+          {}
           <div className="w-full md:w-2/3 p-8 md:p-12">
             <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">About Me</h2>
             <p className="text-slate-300 font-light leading-relaxed mb-10">{agent.bio}</p>

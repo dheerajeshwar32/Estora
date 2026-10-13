@@ -14,7 +14,7 @@ const NotFound = () => {
     <>
       <SEO title="404 - Page Not Found | Estora" description="The page you are looking for does not exist." />
       <div className="min-h-[80vh] flex items-center justify-center pt-24 pb-12 px-4 relative overflow-hidden">
-        {/* Background Effects */}
+        {}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
         
         <motion.div 

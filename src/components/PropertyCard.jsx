@@ -10,10 +10,21 @@ const AMENITY_ICONS = {
   'Pet Friendly': '🐾', 'Furnished': '🪑'
 };
 
+const getOptimizedImageUrl = (url, width = 600) => {
+  if (!url) return url;
+  if (url.includes('images.unsplash.com')) {
+    const base = url.split('?')[0];
+    return `${base}?auto=format&fit=crop&w=${width}&q=75`;
+  }
+  return url;
+};
+
 const PropertyCard = ({ id, image, title, price, location, beds, type, amenities = [], area, status, transactionType }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
   const { savedListings, toggleSaved } = useAppContext();
+
+  const optimizedImage = getOptimizedImageUrl(image, 600);
 
   const isSaved = savedListings.some(item => item.id === id);
 
@@ -39,14 +50,13 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
   const handleMouseMove = (e) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    const target = e.currentTarget;
+    const width = target.clientWidth;
+    const height = target.clientHeight;
+    if (!width || !height) return;
+    const rect = target.getBoundingClientRect();
+    const xPct = (e.clientX - rect.left) / width - 0.5;
+    const yPct = (e.clientY - rect.top) / height - 0.5;
     x.set(xPct);
     y.set(yPct);
   };
@@ -74,11 +84,11 @@ const PropertyCard = ({ id, image, title, price, location, beds, type, amenities
       {imgError || !image ? (
         <div className="absolute inset-0 bg-navy-950 flex items-center justify-center"><span className="text-slate-600 font-bold uppercase tracking-widest text-[10px]">No Image</span></div>
       ) : (
-        <img src={image} alt={title} loading="lazy" onLoad={() => setImgLoaded(true)} onError={() => setImgError(true)} className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 ${imgLoaded ? 'opacity-90 group-hover:opacity-100' : 'opacity-0'}`} />
+        <img src={optimizedImage} alt={title} loading="lazy" decoding="async" onLoad={() => setImgLoaded(true)} onError={() => setImgError(true)} className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 ${imgLoaded ? 'opacity-90 group-hover:opacity-100' : 'opacity-0'}`} />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-[#050b14] via-[#0a1128]/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
       
-      <button onClick={handleSaveClick} className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-[#0a1128]/40 backdrop-blur-md border border-[#ffffff]/10 text-[#ffffff] hover:bg-[#ffffff] hover:text-[#0a1128] transition-colors shadow-lg">
+      <button onClick={handleSaveClick} aria-label={isSaved ? 'Remove from saved properties' : 'Save property'} className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-[#0a1128]/40 backdrop-blur-md border border-[#ffffff]/10 text-[#ffffff] hover:bg-[#ffffff] hover:text-[#0a1128] transition-colors shadow-lg">
         <Heart size={16} className={`transition-colors ${isSaved ? 'fill-blue-500 text-blue-500 group-hover:text-blue-500' : ''}`} />
       </button>
       

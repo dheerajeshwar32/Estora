@@ -26,7 +26,7 @@ const AdminLogin = () => {
 
   return (
     <div className="flex items-center justify-center min-h-[80vh] px-4">
-      {/* Dark Glassmorphism Panel */}
+      {}
       <div className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl w-full max-w-md">
         
         <div className="mb-8 text-center">

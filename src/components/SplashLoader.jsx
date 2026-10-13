@@ -5,16 +5,16 @@ const SplashLoader = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Prevent scrolling while splash is active
+    
     document.body.style.overflow = 'hidden';
     
-    // Hide splash after 2 seconds
+    
     const timer = setTimeout(() => {
       setIsVisible(false);
       setTimeout(() => {
         document.body.style.overflow = 'unset';
         if (onComplete) onComplete();
-      }, 800); // Wait for exit animation
+      }, 800); 
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -48,7 +48,7 @@ const SplashLoader = ({ onComplete }) => {
               </motion.span>
             </h1>
             
-            {/* Elegant line drawing loader underneath */}
+            {}
             <div className="absolute -bottom-4 left-0 right-0 h-[2px] bg-white/10 rounded-full overflow-hidden">
               <motion.div
                 initial={{ x: '-100%' }}

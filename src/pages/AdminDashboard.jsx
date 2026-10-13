@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { db, storage } from '../firebaseConfig';
+import { db, getFirebaseStorage } from '../firebaseConfig';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp, query, orderBy, limit, startAfter } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
@@ -23,17 +23,17 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('properties');
   const navigate = useNavigate();
 
-  // Pagination for listings
+  
   const [lastListingDoc, setLastListingDoc] = useState(null);
   const [hasMoreListings, setHasMoreListings] = useState(true);
   const [loadingMoreListings, setLoadingMoreListings] = useState(false);
 
-  // Multi-Image Upload State
+  
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  // Inquiries State
+  
   const [inquiries, setInquiries] = useState([]);
   const [loadingInquiries, setLoadingInquiries] = useState(false);
 
@@ -135,7 +135,7 @@ const AdminDashboard = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    // Max 6 total images
+    
     const totalAllowed = 6 - formData.existingImages.length;
     const validFiles = files.slice(0, Math.max(0, totalAllowed));
     
@@ -188,12 +188,13 @@ const AdminDashboard = () => {
     try {
       let uploadedUrls = [];
 
-      // Upload all new images in parallel
+      
       if (imageFiles.length > 0) {
         let totalBytes = 0;
         let transferredBytes = 0;
         const progressMap = {};
 
+        const storage = await getFirebaseStorage();
         const uploadPromises = imageFiles.map((file, index) => {
           return new Promise((resolve, reject) => {
             const storageRef = ref(storage, `listings/${Date.now()}_${index}_${file.name}`);
@@ -219,7 +220,7 @@ const AdminDashboard = () => {
         uploadedUrls = await Promise.all(uploadPromises);
       }
 
-      // Combine existing images with newly uploaded ones
+      
       const allImages = [...formData.existingImages, ...uploadedUrls];
 
       const listingData = {
@@ -248,14 +249,14 @@ const AdminDashboard = () => {
         showToast('Property added successfully!', 'success');
       }
       
-      // Reset form
+      
       setFormData(emptyForm);
       setEditingId(null);
       setImageFiles([]);
       imagePreviews.forEach(p => URL.revokeObjectURL(p));
       setImagePreviews([]);
       setUploadProgress(0);
-      // Reset pagination and re-fetch
+      
       setLastListingDoc(null);
       setHasMoreListings(true);
       fetchListings();
@@ -271,7 +272,7 @@ const AdminDashboard = () => {
   const handleApproveSubmission = async (sub) => {
     if (!window.confirm("Approve this listing and publish it to the website?")) return;
     try {
-      // 1. Add to listings collection
+      
       await addDoc(collection(db, 'listings'), {
         title: sub.title,
         description: sub.description,
@@ -281,20 +282,20 @@ const AdminDashboard = () => {
         bathrooms: Number(sub.bathrooms),
         propertyType: sub.propertyType,
         amenities: sub.amenities || [],
-        images: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200"], // Placeholder image for approved listings
+        images: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200"], 
         agentContact: sub.ownerEmail || 'contact@estora.com',
         views: 0,
         saves: 0,
         createdAt: serverTimestamp()
       });
 
-      // 2. Update status in submissions collection
+      
       const subRef = doc(db, 'property_submissions', sub.id);
       await updateDoc(subRef, { status: 'approved', updatedAt: serverTimestamp() });
       
       showToast('Listing approved and published successfully!', 'success');
       fetchSubmissions();
-      // Reset listing pagination to see new listing
+      
       setLastListingDoc(null);
       setHasMoreListings(true);
       fetchListings();
@@ -650,13 +651,13 @@ const AdminDashboard = () => {
         }
       ];
 
-      // Delete existing
+      
       const snapshot = await getDocs(collection(db, 'listings'));
       for (const docSnapshot of snapshot.docs) {
         await deleteDoc(doc(db, 'listings', docSnapshot.id));
       }
 
-      // Add new
+      
       for (const prop of newProperties) {
         let area = 0;
         if (prop.propertyType === 'apartment') area = Math.floor(Math.random() * 2000) + 800;
@@ -719,7 +720,7 @@ const AdminDashboard = () => {
     }
   };
 
-  // Analytics calculations
+  
   const analytics = useMemo(() => {
     const totalProperties = listings.length;
     const totalInquiries = inquiries.length;
@@ -753,7 +754,7 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      {/* Tab Navigation */}
+      {}
       <div className="flex gap-2 mb-8 bg-white/5 p-1.5 rounded-2xl border border-white/10 overflow-x-auto">
         {[
           { id: 'properties', label: 'Properties', icon: LayoutDashboard },
@@ -783,10 +784,10 @@ const AdminDashboard = () => {
         ))}
       </div>
 
-      {/* ──────────── PROPERTIES TAB ──────────── */}
+      {}
       {activeTab === 'properties' && (
         <>
-          {/* Add/Edit Form */}
+          {}
           <div className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl mb-12">
             <div className="flex justify-between items-center border-b border-white/10 pb-4 mb-8">
               <h2 className="text-sm font-bold tracking-widest uppercase text-slate-400">
@@ -1192,7 +1193,7 @@ const AdminDashboard = () => {
             ))}
           </div>
 
-          {/* Inquiries Over Time Chart (CSS Only) */}
+          {}
           {(() => {
             const last7Days = Array.from({length: 7}, (_, i) => {
               const d = new Date();
@@ -1204,7 +1205,7 @@ const AdminDashboard = () => {
               const count = inquiries.filter(inq => {
                 if (!inq.createdAt) return false;
                 try {
-                  // Firebase timestamp
+                  
                   const inqDate = inq.createdAt.toDate().toISOString().split('T')[0];
                   return inqDate === dateStr;
                 } catch(e) { return false; }
@@ -1212,7 +1213,7 @@ const AdminDashboard = () => {
               return { label: new Date(dateStr).toLocaleDateString('en-US', { weekday: 'short' }), count };
             });
             
-            const maxCount = Math.max(...chartData.map(d => d.count), 5); // Minimum scale of 5
+            const maxCount = Math.max(...chartData.map(d => d.count), 5); 
             
             return (
               <div className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 mt-8">
@@ -1228,16 +1229,16 @@ const AdminDashboard = () => {
                     const heightPct = (data.count / maxCount) * 100;
                     return (
                       <div key={i} className="flex-1 flex flex-col items-center justify-end h-full group relative">
-                        {/* Tooltip */}
+                        {}
                         <div className="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity bg-navy-950 text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-white/10 pointer-events-none z-10 shadow-xl whitespace-nowrap">
                           {data.count} Inquiries
                         </div>
-                        {/* Bar */}
+                        {}
                         <div 
                           className="w-full max-w-[40px] bg-blue-500/80 hover:bg-blue-400 rounded-t-lg transition-all duration-700 ease-out" 
-                          style={{ height: `${Math.max(heightPct, 2)}%` }} // Minimum 2% height for visibility
+                          style={{ height: `${Math.max(heightPct, 2)}%` }} 
                         ></div>
-                        {/* Label */}
+                        {}
                         <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase mt-4">{data.label}</span>
                       </div>
                     );
@@ -1247,7 +1248,7 @@ const AdminDashboard = () => {
             );
           })()}
 
-          {/* Most Viewed & Most Saved */}
+          {}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             {analytics.mostViewed && (analytics.mostViewed.views || 0) > 0 && (
               <div className="bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10">
@@ -1280,7 +1281,7 @@ const AdminDashboard = () => {
             )}
           </div>
 
-          {/* Per-listing stats table */}
+          {}
           <div className="bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10">
             <h3 className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-6">Listing Performance</h3>
             <div className="overflow-x-auto">

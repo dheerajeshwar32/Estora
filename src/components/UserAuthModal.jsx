@@ -7,7 +7,7 @@ import { useAppContext } from '../context/AppContext';
 const UserAuthModal = ({ isOpen, onClose }) => {
   const { loginWithGoogle, loginWithEmail, signupWithEmail } = useAuth();
   const { showToast } = useAppContext();
-  const [mode, setMode] = useState('login'); // 'login' | 'signup'
+  const [mode, setMode] = useState('login'); 
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -82,7 +82,7 @@ const UserAuthModal = ({ isOpen, onClose }) => {
             onClick={(e) => e.stopPropagation()}
             className="bg-navy-900 border border-white/10 p-8 rounded-3xl w-full max-w-md shadow-2xl relative"
           >
-            <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
+            <button onClick={onClose} aria-label="Close sign in modal" className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
               <X size={20} />
             </button>
 
@@ -95,7 +95,7 @@ const UserAuthModal = ({ isOpen, onClose }) => {
               </p>
             </div>
 
-            {/* Google Sign-In */}
+            {}
             <button
               onClick={handleGoogleLogin}
               disabled={isLoading}
@@ -110,21 +110,21 @@ const UserAuthModal = ({ isOpen, onClose }) => {
               Continue with Google
             </button>
 
-            {/* Divider */}
+            {}
             <div className="flex items-center gap-4 mb-6">
               <div className="flex-1 h-px bg-white/10"></div>
               <span className="text-xs text-slate-500 font-bold uppercase tracking-widest">or</span>
               <div className="flex-1 h-px bg-white/10"></div>
             </div>
 
-            {/* Error */}
+            {}
             {error && (
               <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-xl mb-4 text-sm font-medium">
                 {error}
               </div>
             )}
 
-            {/* Email/Password Form */}
+            {}
             <form onSubmit={handleEmailSubmit} className="space-y-4">
               {mode === 'signup' && (
                 <input
@@ -161,7 +161,7 @@ const UserAuthModal = ({ isOpen, onClose }) => {
               </button>
             </form>
 
-            {/* Toggle Login/Signup */}
+            {}
             <p className="text-center text-sm text-slate-400 mt-6">
               {mode === 'login' ? (
                 <>Don't have an account? <button onClick={() => { setMode('signup'); setError(''); }} className="text-blue-400 hover:text-blue-300 font-medium transition-colors">Sign up</button></>

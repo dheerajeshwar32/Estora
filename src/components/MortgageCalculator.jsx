@@ -32,9 +32,9 @@ const MortgageCalculator = ({ price }) => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Controls */}
+        {}
         <div className="space-y-8">
-          {/* Down Payment */}
+          {}
           <div>
             <div className="flex justify-between mb-2">
               <label className="text-sm font-medium text-slate-400">Down Payment ({downPaymentPct}%)</label>
@@ -47,7 +47,7 @@ const MortgageCalculator = ({ price }) => {
             />
           </div>
 
-          {/* Interest Rate */}
+          {}
           <div>
             <div className="flex justify-between mb-2">
               <label className="text-sm font-medium text-slate-400">Interest Rate</label>
@@ -60,7 +60,7 @@ const MortgageCalculator = ({ price }) => {
             />
           </div>
 
-          {/* Loan Term */}
+          {}
           <div>
             <div className="flex justify-between mb-2">
               <label className="text-sm font-medium text-slate-400">Loan Term</label>
@@ -74,7 +74,7 @@ const MortgageCalculator = ({ price }) => {
           </div>
         </div>
 
-        {/* Results */}
+        {}
         <div className="bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col justify-center">
           <div className="text-center mb-8">
             <p className="text-sm font-medium text-slate-400 uppercase tracking-widest mb-2">Estimated EMI</p>

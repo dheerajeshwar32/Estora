@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://estora.com/sitemap.xml
+Sitemap: https://estora-realestate.vercel.app/sitemap.xml
 

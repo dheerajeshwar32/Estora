@@ -26,18 +26,18 @@ const CompareModal = () => {
           exit={{ scale: 0.95, opacity: 0, y: 20 }} 
           className="bg-navy-900 border border-white/10 rounded-3xl w-full max-w-6xl shadow-2xl relative my-8 overflow-hidden flex flex-col max-h-[90vh]"
         >
-          {/* Header */}
+          {}
           <div className="p-6 border-b border-white/5 flex justify-between items-center bg-navy-950/50 sticky top-0 z-10">
             <div>
               <h2 className="text-2xl font-medium text-[color:var(--theme-white)]">Compare Properties</h2>
               <p className="text-slate-400 text-sm">Comparing {compareList.length} of 3 properties</p>
             </div>
-            <button onClick={() => setIsCompareModalOpen(false)} className="text-slate-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
+            <button onClick={() => setIsCompareModalOpen(false)} aria-label="Close comparison modal" className="text-slate-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full">
               <X size={20} />
             </button>
           </div>
 
-          {/* Compare Table */}
+          {}
           <div className="p-6 overflow-x-auto flex-1 custom-scrollbar">
             {compareList.length === 0 ? (
               <div className="text-center text-slate-400 py-12">No properties selected for comparison.</div>
@@ -52,6 +52,7 @@ const CompareModal = () => {
                           <img src={prop.image || prop.images?.[0]} alt={prop.title} className="w-full h-full object-cover" />
                           <button 
                             onClick={() => toggleCompare(prop)}
+                            aria-label={`Remove ${prop.title} from comparison`}
                             className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
                           >
                             <X size={14} />
@@ -64,7 +65,7 @@ const CompareModal = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Price */}
+                  {}
                   <tr>
                     <td className="p-4 border-b border-white/5 font-medium text-slate-300">Price</td>
                     {compareList.map(prop => (
@@ -73,7 +74,7 @@ const CompareModal = () => {
                       </td>
                     ))}
                   </tr>
-                  {/* Beds / Type */}
+                  {}
                   <tr>
                     <td className="p-4 border-b border-white/5 font-medium text-slate-300">Type / Size</td>
                     {compareList.map(prop => {
@@ -88,7 +89,7 @@ const CompareModal = () => {
                     })}
                   </tr>
                   
-                  {/* Amenities Section */}
+                  {}
                   <tr>
                     <td colSpan={compareList.length + 1} className="p-4 pt-8 pb-2 text-xs font-bold uppercase tracking-wider text-slate-500">Amenities</td>
                   </tr>

@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBBvRkFb5Uv3DposoVi_oH5OVQlTbzD5_E",
@@ -13,11 +12,15 @@ const firebaseConfig = {
   measurementId: "G-8BKN5SJ63E"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
-// Export Firebase services for use across Estora
+
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
-export const storage = getStorage(app);
+
+// Lazy-load Firebase Storage only when needed (used only by AdminDashboard)
+export const getFirebaseStorage = () => {
+  return import("firebase/storage").then(({ getStorage }) => getStorage(app));
+};

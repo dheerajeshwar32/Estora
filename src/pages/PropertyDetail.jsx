@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc, addDoc, collection, serverTimestamp, updateDoc, increment, query, where, limit, getDocs } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
-import { MapPin, BedDouble, Bath, Share, X } from 'lucide-react';
+import { MapPin, BedDouble, Bath, Share } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
-import { motion, AnimatePresence } from 'framer-motion';
 import ImageGallery from '../components/ImageGallery';
 import PropertyCard from '../components/PropertyCard';
 import MortgageCalculator from '../components/MortgageCalculator';
@@ -20,7 +19,7 @@ const AMENITY_ICONS = {
   'Pet Friendly': '🐾', 'Furnished': '🪑'
 };
 
-// Skeleton loader matching the page layout
+
 const PropertyEnquiryForm = ({ propertyId }) => {
   const { showToast } = useAppContext();
   const [loading, setLoading] = useState(false);
@@ -78,10 +77,10 @@ const DetailSkeleton = () => (
   <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div className="w-40 h-4 bg-white/5 rounded-lg mb-8 animate-pulse" />
     <div className="bg-navy-900 rounded-3xl border border-white/5 overflow-hidden shadow-2xl">
-      {/* Image skeleton */}
+      {}
       <div className="w-full h-[400px] md:h-[500px] bg-navy-950 animate-pulse" />
       <div className="p-8 md:p-14">
-        {/* Title area */}
+        {}
         <div className="flex flex-col md:flex-row justify-between items-start mb-10 gap-6">
           <div className="flex-1">
             <div className="w-24 h-4 bg-white/10 rounded-full mb-4 animate-pulse" />
@@ -90,19 +89,19 @@ const DetailSkeleton = () => (
           </div>
           <div className="w-40 h-10 bg-white/10 rounded-xl animate-pulse" />
         </div>
-        {/* Stats */}
+        {}
         <div className="flex gap-10 border-y border-white/10 py-8 mb-10">
           <div className="w-28 h-16 bg-white/5 rounded-xl animate-pulse" />
           <div className="w-28 h-16 bg-white/5 rounded-xl animate-pulse" />
         </div>
-        {/* Description */}
+        {}
         <div className="mb-12 space-y-3">
           <div className="w-32 h-4 bg-white/10 rounded-lg animate-pulse" />
           <div className="w-full h-4 bg-white/5 rounded-lg animate-pulse" />
           <div className="w-full h-4 bg-white/5 rounded-lg animate-pulse" />
           <div className="w-2/3 h-4 bg-white/5 rounded-lg animate-pulse" />
         </div>
-        {/* Agent */}
+        {}
         <div className="bg-navy-950 rounded-2xl p-8 border border-white/5 flex justify-between items-center">
           <div className="w-40 h-10 bg-white/5 rounded-lg animate-pulse" />
           <div className="w-36 h-12 bg-white/10 rounded-full animate-pulse" />
@@ -120,7 +119,7 @@ const PropertyDetail = () => {
   const { showToast } = useAppContext();
   const [isScheduleTourOpen, setIsScheduleTourOpen] = useState(false);
 
-  // Set dynamic page title
+  
   useEffect(() => {
     if (property) {
       document.title = `${property.title} in ${property.location} — Estora`;
@@ -142,12 +141,12 @@ const PropertyDetail = () => {
           const data = { id: docSnap.id, ...docSnap.data() };
           setProperty(data);
           
-          // Increment view counter
+          
           try {
             await updateDoc(docRef, { views: increment(1) });
           } catch (err) { console.error('Failed to increment views:', err); }
 
-          // Fetch similar properties
+          
           try {
             const listingsRef = collection(db, 'listings');
             const q = query(
@@ -204,7 +203,7 @@ const PropertyDetail = () => {
           <div className="lg:w-2/3">
             <div className="bg-navy-900 rounded-3xl border border-white/5 overflow-hidden shadow-2xl">
               
-              {/* Image Gallery */}
+              {}
               <ImageGallery images={property.images} />
               
               <div className="p-8 md:p-14">
@@ -253,7 +252,7 @@ const PropertyDetail = () => {
                   )}
                 </div>
 
-                {/* Amenities Section */}
+                {}
                 {amenities.length > 0 && (
                   <div className="mb-10">
                     <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-5">Amenities</h2>
@@ -272,7 +271,7 @@ const PropertyDetail = () => {
                   <p className="text-slate-300 leading-relaxed font-light text-lg">{property.description}</p>
                 </div>
 
-                {/* Floor Plan Section */}
+                {}
                 {(!(property.propertyType || '').toLowerCase().includes('plot')) && (
                   <div className="mb-12">
                     <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-5">Floor Plan</h2>
@@ -292,13 +291,13 @@ const PropertyDetail = () => {
                   </div>
                 )}
 
-                {/* Mortgage Calculator */}
+                {}
                 <MortgageCalculator price={property.price} />
 
-                {/* Neighborhood Stats */}
+                {}
                 <NeighborhoodStats location={property.location} type={property.propertyType} />
 
-                {/* FAQ Accordion */}
+                {}
                 <FAQAccordion />
 
                 <div className="bg-navy-950 rounded-2xl p-8 border border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
@@ -320,7 +319,7 @@ const PropertyDetail = () => {
           </div>
         </div>
 
-        {/* Similar Properties */}
+        {}
         {similarProperties.length > 0 && (
           <div className="border-t border-white/5 pt-12 mt-12">
             <h2 className="text-2xl font-medium text-white mb-8">Similar Properties</h2>

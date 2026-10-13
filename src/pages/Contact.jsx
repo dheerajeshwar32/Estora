@@ -43,7 +43,7 @@ const Contact = () => {
       </motion.div>
 
       <div className="flex flex-col lg:flex-row gap-12 max-w-5xl mx-auto">
-        {/* Contact Info */}
+        {}
         <div className="w-full lg:w-1/3 space-y-8">
           <div className="bg-navy-900 border border-white/5 p-8 rounded-3xl">
             <h3 className="text-xl font-bold text-[color:var(--theme-white)] mb-6">Contact Information</h3>
@@ -82,7 +82,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Contact Form */}
+        {}
         <div className="w-full lg:w-2/3">
           <form onSubmit={handleSubmit} className="bg-navy-900 border border-white/5 p-8 md:p-12 rounded-3xl space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

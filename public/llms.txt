@@ -1,0 +1,20 @@
+# Estora
+
+> Luxury Real Estate Discovery & Scheduling Platform
+
+Estora is a modern web application facilitating luxury property discovery, AI-powered semantic search, property comparison, and lead generation.
+
+## Key Pages
+- [Home & Discover](https://estora-realestate.vercel.app/): Explore all verified luxury real estate listings.
+- [Properties](https://estora-realestate.vercel.app/properties): Search and filter listings by location, price, bedrooms, and amenities.
+- [Projects](https://estora-realestate.vercel.app/projects): New developments and master-planned communities.
+- [Agents](https://estora-realestate.vercel.app/agents): Directory of certified luxury real estate agents.
+- [Services](https://estora-realestate.vercel.app/services): Valuation, investment advisory, and property listing.
+- [About](https://estora-realestate.vercel.app/about): Company overview and mission.
+- [Contact](https://estora-realestate.vercel.app/contact): Contact form and agent assistance.
+
+## Capabilities
+- AI-Powered Semantic Search powered by Google Gemini API.
+- Side-by-side comparison matrix for up to 3 properties.
+- Dynamic Mortgage & EMI Calculator.
+- Direct site visit scheduling (in-person or virtual).

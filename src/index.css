@@ -10,22 +10,22 @@
 }
 
 :root {
-    --theme-navy-950: #0a1128; 
+  --theme-navy-950: #0a1128; 
   --theme-navy-900: #101c3a;
   --theme-white: #ffffff;
   --theme-slate-300: #cbd5e1;
   --theme-slate-400: #94a3b8;
-  --theme-slate-500: #64748b;
+  --theme-slate-500: #8ea3bf;
   --theme-map-filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
 }
 
 :root.light {
-    --theme-navy-950: #f1f5f9; 
+  --theme-navy-950: #f1f5f9; 
   --theme-navy-900: #ffffff; 
   --theme-white: #0f172a; 
   --theme-slate-300: #475569;
-  --theme-slate-400: #64748b;
-  --theme-slate-500: #94a3b8;
+  --theme-slate-400: #475569;
+  --theme-slate-500: #334155;
   --theme-map-filter: none;
 }
 

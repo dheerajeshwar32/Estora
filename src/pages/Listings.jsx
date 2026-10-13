@@ -159,8 +159,10 @@ const Listings = () => {
   const filterContent = (
     <div className="space-y-6 text-sm">
       <div className="md:hidden">
-        <label className="block text-slate-300 font-medium mb-2">Sort By</label>
+        <label htmlFor="mobile-sort-by" className="block text-slate-300 font-medium mb-2">Sort By</label>
         <select 
+          id="mobile-sort-by"
+          aria-label="Sort properties"
           value={sortBy} 
           onChange={(e) => setSortBy(e.target.value)}
           className="w-full p-3 bg-navy-900 border border-white/10 rounded-xl text-white focus:border-white outline-none transition-all appearance-none"
@@ -192,40 +194,40 @@ const Listings = () => {
       </div>
 
       <div>
-        <label className="flex items-center gap-2 text-slate-300 font-medium mb-2">
+        <label htmlFor="filter-location" className="flex items-center gap-2 text-slate-300 font-medium mb-2">
           <MapPin size={16} className="text-slate-400"/> Location
         </label>
-        <input type="text" placeholder="e.g. Chennai" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={locationStr} onChange={e => setLocationStr(e.target.value)} />
+        <input id="filter-location" type="text" placeholder="e.g. Chennai" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={locationStr} onChange={e => setLocationStr(e.target.value)} />
       </div>
       
       <div className="flex gap-3">
         <div className="w-1/2">
-          <label className="block text-slate-300 font-medium mb-2">Min Price</label>
-          <input type="number" placeholder="₹0" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
+          <label htmlFor="filter-min-price" className="block text-slate-300 font-medium mb-2">Min Price</label>
+          <input id="filter-min-price" type="number" placeholder="₹0" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
         </div>
         <div className="w-1/2">
-          <label className="block text-slate-300 font-medium mb-2">Max Price</label>
-          <input type="number" placeholder="Limit" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
-        </div>
-      </div>
-
-      <div className="flex gap-3">
-        <div className="w-1/2">
-          <label className="block text-slate-300 font-medium mb-2">Min Area</label>
-          <input type="number" placeholder="Sq.ft" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={minArea} onChange={e => setMinArea(e.target.value)} />
-        </div>
-        <div className="w-1/2">
-          <label className="block text-slate-300 font-medium mb-2">Max Area</label>
-          <input type="number" placeholder="Sq.ft" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={maxArea} onChange={e => setMaxArea(e.target.value)} />
+          <label htmlFor="filter-max-price" className="block text-slate-300 font-medium mb-2">Max Price</label>
+          <input id="filter-max-price" type="number" placeholder="Limit" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
         </div>
       </div>
 
       <div className="flex gap-3">
         <div className="w-1/2">
-          <label className="flex items-center gap-2 text-slate-300 font-medium mb-2">
+          <label htmlFor="filter-min-area" className="block text-slate-300 font-medium mb-2">Min Area</label>
+          <input id="filter-min-area" type="number" placeholder="Sq.ft" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={minArea} onChange={e => setMinArea(e.target.value)} />
+        </div>
+        <div className="w-1/2">
+          <label htmlFor="filter-max-area" className="block text-slate-300 font-medium mb-2">Max Area</label>
+          <input id="filter-max-area" type="number" placeholder="Sq.ft" className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:border-white outline-none transition-all" value={maxArea} onChange={e => setMaxArea(e.target.value)} />
+        </div>
+      </div>
+
+      <div className="flex gap-3">
+        <div className="w-1/2">
+          <label htmlFor="filter-bedrooms" className="flex items-center gap-2 text-slate-300 font-medium mb-2">
             <BedDouble size={16} className="text-slate-400"/> Beds
           </label>
-          <select className="w-full p-3 bg-navy-900 border border-white/10 rounded-xl text-white focus:border-white outline-none transition-all appearance-none" value={bedrooms} onChange={e => setBedrooms(e.target.value)}>
+          <select id="filter-bedrooms" aria-label="Filter by bedrooms" className="w-full p-3 bg-navy-900 border border-white/10 rounded-xl text-white focus:border-white outline-none transition-all appearance-none" value={bedrooms} onChange={e => setBedrooms(e.target.value)}>
             <option value="">Any</option>
             <option value="1">1 Bed</option>
             <option value="2">2 Beds</option>
@@ -235,8 +237,8 @@ const Listings = () => {
           </select>
         </div>
         <div className="w-1/2">
-          <label className="block text-slate-300 font-medium mb-2">Type</label>
-          <select className="w-full p-3 bg-navy-900 border border-white/10 rounded-xl text-white focus:border-white outline-none transition-all appearance-none" value={propertyType} onChange={e => setPropertyType(e.target.value)}>
+          <label htmlFor="filter-property-type" className="block text-slate-300 font-medium mb-2">Type</label>
+          <select id="filter-property-type" aria-label="Filter by property type" className="w-full p-3 bg-navy-900 border border-white/10 rounded-xl text-white focus:border-white outline-none transition-all appearance-none" value={propertyType} onChange={e => setPropertyType(e.target.value)}>
             <option value="">Any</option>
             <option value="apartment">Apartment</option>
             <option value="house">House</option>
@@ -312,18 +314,20 @@ const Listings = () => {
           Explore an exclusive collection of premium properties tailored to your lifestyle.
         </motion.p>
         
-        {!loading && listings.length > 0 && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-500 relative z-10 mb-10"
-          >
-            <span>{listings.length}+ Listings</span>
-            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-            <span>{uniqueLocationsCount} Locations</span>
-          </motion.div>
-        )}
+        <div className="min-h-[24px] mb-10 relative z-10 flex justify-center items-center">
+          {!loading && listings.length > 0 && (
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 0.4 }}
+              className="flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-400"
+            >
+              <span>{listings.length}+ Listings</span>
+              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+              <span>{uniqueLocationsCount} Locations</span>
+            </motion.div>
+          )}
+        </div>
 
 
       </div>
@@ -380,9 +384,9 @@ const Listings = () => {
       <div className="flex flex-col md:flex-row gap-10 mt-12">
         
         <div className="md:hidden flex justify-between items-center mb-2">
-          <h1 className="text-3xl font-medium tracking-tight text-white">
+          <h2 className="text-3xl font-medium tracking-tight text-white">
             Discover {!loading && <span className="text-lg text-slate-400 font-light">({filteredListings.length})</span>}
-          </h1>
+          </h2>
           <button 
             onClick={() => setIsMobileFiltersOpen(true)}
             className="px-5 py-2.5 bg-white text-navy-950 rounded-full text-xs font-bold tracking-widest uppercase transition-colors"
@@ -444,15 +448,17 @@ const Listings = () => {
           
           <div className="hidden md:flex items-center justify-between mb-8">
             <div className="flex items-baseline gap-4">
-              <h1 className="text-4xl md:text-5xl font-medium tracking-tight text-white">
+              <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white">
                 Discover
-              </h1>
+              </h2>
               {!loading && <span className="text-lg text-slate-400 font-light">({filteredListings.length})</span>}
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-xs font-bold tracking-widest uppercase text-slate-400">Sort By:</span>
+              <label htmlFor="desktop-sort-by" className="text-xs font-bold tracking-widest uppercase text-slate-400">Sort By:</label>
               <select
+                id="desktop-sort-by"
+                aria-label="Sort properties by"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="bg-navy-950 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-white/30"

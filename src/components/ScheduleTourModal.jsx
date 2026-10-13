@@ -66,7 +66,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
           <button onClick={onClose} aria-label="Close tour scheduling modal" className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-10 bg-navy-950 p-2 rounded-full"><X size={20}/></button>
           
           <div className="mb-8">
-            <h3 className="text-2xl font-medium text-[color:var(--theme-white)] mb-2">Schedule a Tour</h3>
+            <h2 className="text-2xl font-medium text-[color:var(--theme-white)] mb-2">Schedule a Tour</h2>
             <p className="text-slate-400 text-sm font-light">
               {step === 1 ? 'Select your preferred date and time.' : 'Enter your details to confirm.'}
             </p>

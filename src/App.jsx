@@ -343,7 +343,7 @@ const Footer = () => (
           </p>
         </div>
         <div>
-          <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Explore</h4>
+          <h3 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Explore</h3>
           <ul className="space-y-2 text-sm text-slate-400 font-light">
             <li><Link to="/" className="hover:text-blue-400 transition-colors">Premium Listings</Link></li>
             <li><Link to="/projects" className="hover:text-blue-400 transition-colors">New Developments</Link></li>
@@ -352,7 +352,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Company</h4>
+          <h3 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Company</h3>
           <ul className="space-y-2 text-sm text-slate-400 font-light">
             <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
             <li><Link to="/blog" className="hover:text-blue-400 transition-colors">Blog & Guides</Link></li>

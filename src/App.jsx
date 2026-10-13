@@ -7,8 +7,7 @@ import { Heart, X, CheckCircle, AlertCircle, Info, Trash2, User, LogOut, LogIn, 
 import UserAuthModal from './components/UserAuthModal';
 import CompareModal from './components/CompareModal';
 
-// Lazy-load all pages for code-splitting
-const Listings = lazy(() => import('./pages/Listings'));
+import Listings from './pages/Listings';
 const PropertyDetail = lazy(() => import('./pages/PropertyDetail'));
 const AdminLogin = lazy(() => import('./pages/AdminLogin'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
@@ -42,8 +41,8 @@ const AnimatedRoutes = () => {
     <Suspense fallback={<PageLoader />}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Listings /></motion.div>} />
-          <Route path="/properties" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Listings /></motion.div>} />
+          <Route path="/" element={<Listings />} />
+          <Route path="/properties" element={<Listings />} />
           <Route path="/listing/:id" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><PropertyDetail /></motion.div>} />
           <Route path="/agents" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><Agents /></motion.div>} />
           <Route path="/agent/:id" element={<motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit"><AgentDetail /></motion.div>} />
@@ -145,19 +144,6 @@ const GlobalUI = () => {
   );
 };
 
-const navContainerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05 }
-  }
-};
-
-const navItemVariants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.25 } }
-};
-
 const Navbar = () => {
   const { savedListings, setIsSavedDrawerOpen, theme, toggleTheme } = useAppContext();
   const { user, isAdmin, logout } = useAuth();
@@ -170,17 +156,12 @@ const Navbar = () => {
   return (
     <>
       <nav className="border-b border-white/5 bg-navy-950/80 backdrop-blur-xl sticky top-0 z-40">
-        <motion.div 
-          variants={navContainerVariants} 
-          initial="hidden" 
-          animate="show" 
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center"
-        >
-          <motion.div variants={navItemVariants}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center">
+          <div>
             <Link to="/" className="text-2xl font-bold tracking-tighter text-white mr-8">ESTORA<span className="text-blue-500">.</span></Link>
-          </motion.div>
+          </div>
           
-          <motion.div variants={navItemVariants} className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             <Link to="/" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Home</Link>
             <Link to="/properties" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Properties</Link>
             <Link to="/projects" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Projects</Link>
@@ -188,17 +169,16 @@ const Navbar = () => {
             <Link to="/services" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Services</Link>
             <Link to="/about" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">About</Link>
             <Link to="/contact" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Contact</Link>
-          </motion.div>
+          </div>
 
           <div className="flex items-center gap-4 ml-auto">
-            {}
-            <motion.div variants={navItemVariants} className="hidden md:block mr-2">
+            <div className="hidden md:block mr-2">
               <Link to="/list-property" className="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">
                 List Property
               </Link>
-            </motion.div>
-            {}
-            <motion.div variants={navItemVariants}>
+            </div>
+
+            <div>
               <button 
                 onClick={toggleTheme} 
                 className="text-slate-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"
@@ -206,19 +186,18 @@ const Navbar = () => {
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-            </motion.div>
+            </div>
 
-            {}
-            <motion.div variants={navItemVariants}>
+            <div>
               <button onClick={() => setIsSavedDrawerOpen(true)} className="relative text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
                 <Heart size={20} className={savedListings.length > 0 ? 'fill-blue-500 text-blue-500' : ''} />
                 <span className="hidden sm:block">Saved</span>
                 {savedListings.length > 0 && <span className="absolute -top-1.5 -left-1.5 bg-blue-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">{savedListings.length}</span>}
               </button>
-            </motion.div>
+            </div>
 
             {/* User Auth Area */}
-            <motion.div variants={navItemVariants}>
+            <div>
               {user ? (
                 <div className="relative">
                   <button
@@ -287,10 +266,9 @@ const Navbar = () => {
                   <span className="hidden sm:block">Sign In</span>
                 </button>
               )}
-            </motion.div>
+            </div>
 
-            {}
-            <motion.div variants={navItemVariants} className="lg:hidden">
+            <div className="lg:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="text-slate-400 hover:text-white p-2 transition-colors"
@@ -298,9 +276,9 @@ const Navbar = () => {
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
 
         {}
         <AnimatePresence>

@@ -18,3 +18,4 @@ Estora is a modern web application facilitating luxury property discovery, AI-po
 - /services: Real estate consultation & mortgage estimation
 - /about: Company background
 - /contact: Inquiry dispatch
+

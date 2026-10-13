@@ -295,24 +295,18 @@ const Listings = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/80 to-navy-950 z-0" />
         </div>
         
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.6 }}
+        <h1 
           className="text-5xl md:text-7xl font-medium tracking-tight text-[color:var(--theme-white)] mb-6 leading-tight relative z-10"
         >
           Discover your <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(to right, var(--theme-white), var(--theme-slate-400))' }}>extraordinary home.</span>
-        </motion.h1>
+        </h1>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.6, delay: 0.1 }}
+        <p 
           className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto mb-10 relative z-10"
         >
           Explore an exclusive collection of premium properties tailored to your lifestyle.
-        </motion.p>
+        </p>
         
         <div className="min-h-[24px] mb-10 relative z-10 flex justify-center items-center">
           {!loading && listings.length > 0 && (

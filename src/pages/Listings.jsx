@@ -343,6 +343,7 @@ const Listings = () => {
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
+          <h2 className="sr-only">Platform Highlights</h2>
           <div className="flex flex-col md:flex-row justify-around items-center mb-12 gap-8 md:gap-6 text-center">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">$2B+</div>

@@ -18,3 +18,4 @@ Estora is a modern web application facilitating luxury property discovery, AI-po
 - Side-by-side comparison matrix for up to 3 properties.
 - Dynamic Mortgage & EMI Calculator.
 - Direct site visit scheduling (in-person or virtual).
+

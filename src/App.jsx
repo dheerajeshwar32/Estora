@@ -149,13 +149,13 @@ const navContainerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    transition: { staggerChildren: 0.05 }
   }
 };
 
 const navItemVariants = {
-  hidden: { opacity: 0, y: -20 },
-  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } }
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.25 } }
 };
 
 const Navbar = () => {
@@ -335,6 +335,7 @@ const Navbar = () => {
 const Footer = () => (
   <footer className="border-t border-white/5 bg-navy-900/50 mt-20">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 className="sr-only">Footer Navigation</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div className="md:col-span-2">
           <Link to="/" className="text-2xl font-bold tracking-tighter text-white mb-4 block">ESTORA<span className="text-blue-500">.</span></Link>

@@ -1,0 +1,20 @@
+# Estora — Full Platform Documentation
+
+Estora is a modern web application facilitating luxury property discovery, AI-powered semantic search, property comparison, and lead generation.
+
+## System Architecture
+- Frontend: React 19 with Vite
+- Styling: Tailwind CSS v4 & Framer Motion
+- Database: Google Cloud Firestore (NoSQL)
+- Authentication: Firebase Authentication
+- AI Engine: Google Gemini API via Vercel Edge Serverless Functions
+- Deployment: Vercel Edge Network
+
+## Endpoints and Pages
+- /: Main Discover portal with AI Semantic Search and property filtering
+- /properties: Full property directory
+- /projects: Architectural developments
+- /agents: Verified agency partners
+- /services: Real estate consultation & mortgage estimation
+- /about: Company background
+- /contact: Inquiry dispatch

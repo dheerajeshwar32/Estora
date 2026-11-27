@@ -323,7 +323,7 @@ const Footer = () => (
             <EstoraLogo variant="lockup" size="md" />
           </Link>
           <p className="text-sm text-slate-400 font-light max-w-sm leading-relaxed">
-            Curating the finest premium properties globally. Elevating the real estate experience through intelligent design and AI-driven discovery.
+            Curating verified luxury residences, villas, and commercial spaces across India&apos;s premier cities through architectural clarity and AI discovery.
           </p>
         </div>
         <div>

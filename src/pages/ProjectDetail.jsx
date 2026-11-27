@@ -9,22 +9,22 @@ import ScheduleTourModal from '../components/ScheduleTourModal';
 const PROJECT_DATA = {
   1: {
     name: 'Estora Horizon', developer: 'Estora Developers', location: 'Marine Drive, Mumbai',
-    overview: 'A beacon of modern luxury architecture, Estora Horizon offers panoramic ocean views with world-class amenities.',
-    config: '3 & 4 BHK Ultra-Luxury Apartments', price: '₹5 Cr - ₹12 Cr',
-    units: 120, status: 'Upcoming', possession: 'Dec 2027',
+    overview: 'A beacon of coastal architectural minimalism overlooking the Arabian Sea, Estora Horizon features private sky-decks, seismic-resilient structure, and concierge living.',
+    config: '3 & 4 BHK Sea-Facing Residences', price: '₹5.2 Cr - ₹12.4 Cr',
+    units: 120, status: 'Upcoming', possession: 'Q4 2028',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200'
   },
   2: {
-    name: 'The Sapphire Valley', developer: 'Estora Developers', location: 'Whitefield, Bangalore',
-    overview: 'Sprawling premium villas nestled in 50 acres of lush greenery, offering the perfect blend of nature and smart-home technology.',
-    config: '4 & 5 BHK Premium Villas', price: '₹3.5 Cr - ₹8 Cr',
-    units: 85, status: 'Ongoing', possession: 'Aug 2026',
+    name: 'The Sapphire Valley', developer: 'Estora Developers', location: 'Whitefield, Bengaluru',
+    overview: 'Low-density bespoke courtyard villas across 28 landscaped acres with rainwater harvesting, solar roofing, and private plunge pools.',
+    config: '4 & 5 BHK Courtyard Villas', price: '₹3.5 Cr - ₹8.2 Cr',
+    units: 85, status: 'Ongoing', possession: 'Mar 2027',
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200'
   },
   3: {
-    name: 'Oasis Commercial Park', developer: 'Estora Developers', location: 'Cyber City, Gurgaon',
-    overview: 'Grade-A commercial spaces designed for the modern enterprise, featuring LEED-certified sustainable architecture.',
-    config: 'Commercial Office Spaces', price: 'Lease / Buy',
+    name: 'Oasis Commercial Park', developer: 'Estora Developers', location: 'Cyber City, Gurugram',
+    overview: 'IGBC Platinum-rated Grade-A workspace complex crafted for global enterprise teams, offering double-glazed acoustic facades and Metro skywalk access.',
+    config: 'Commercial Office Suites', price: 'Lease / Buy',
     units: 200, status: 'Completed', possession: 'Ready to Move',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200'
   }
@@ -39,7 +39,12 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-navy-950 pb-20">
-      <ScheduleTourModal isOpen={isScheduleOpen} onClose={() => setIsScheduleOpen(false)} propertyId={`project-${id}`} />
+      <ScheduleTourModal
+        isOpen={isScheduleOpen}
+        onClose={() => setIsScheduleOpen(false)}
+        property={{ id: `project-${id}`, title: project.name, agentContact: 'projects@estora.com' }}
+        showToast={showToast}
+      />
       {}
       <div className="relative h-[60vh] w-full">
         <img src={project.image} alt={project.name} className="w-full h-full object-cover" />

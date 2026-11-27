@@ -7,26 +7,26 @@ import { useAppContext } from '../context/AppContext';
 const POSTS = [
   {
     id: 1,
-    title: '10 Things to Check Before Buying a Luxury Apartment',
-    excerpt: 'A comprehensive guide to ensuring your premium property investment meets all structural and legal standards.',
+    title: 'RERA, Carpet Area & Title Due Diligence Before Buying a Residence',
+    excerpt: 'A practical checklist verifying RERA registration numbers, carpet-to-super-built-up ratios, OC certificates, and encumbrance records in Indian metro purchases.',
     image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800',
-    date: 'Oct 12, 2026',
+    date: 'Nov 14, 2026',
     category: 'Property Guides'
   },
   {
     id: 2,
-    title: 'Understanding Real Estate Market Trends in 2026',
-    excerpt: 'An analysis of how remote work and sustainability are shifting demands in urban real estate.',
+    title: 'Tier-1 Luxury Housing & Infrastructure Corridors in Late 2026',
+    excerpt: 'How coastal road expansions, airport expressways, and metro extensions are reshaping residential demand across Mumbai, Bengaluru, and NCR.',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800',
-    date: 'Sep 28, 2026',
+    date: 'Oct 28, 2026',
     category: 'Market Insights'
   },
   {
     id: 3,
-    title: 'How to Maximize Rental Yield on Commercial Properties',
-    excerpt: 'Expert tips on finding the right commercial tenants and negotiating long-term lease agreements.',
+    title: 'Evaluating Grade-A Commercial Office Yields & Lock-In Terms',
+    excerpt: 'Comparing net triple-lease escalations, CAM structures, and tenant covenants across Navi Mumbai and Cyber City commercial assets.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
-    date: 'Sep 15, 2026',
+    date: 'Oct 09, 2026',
     category: 'Investment'
   }
 ];

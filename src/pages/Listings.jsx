@@ -340,18 +340,18 @@ const Listings = () => {
           <h2 className="sr-only">Platform Highlights</h2>
           <div className="flex flex-col md:flex-row justify-around items-center mb-12 gap-8 md:gap-6 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">$2B+</div>
-              <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Property Value</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">₹420+ Cr</div>
+              <div className="text-xs font-bold tracking-widest uppercase" style={{ color: 'var(--estora-gold)' }}>Curated Portfolio</div>
             </div>
             <div className="hidden md:block w-px h-16 bg-white/10"></div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">99%</div>
-              <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Client Satisfaction</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">4.9 / 5</div>
+              <div className="text-xs font-bold tracking-widest uppercase" style={{ color: 'var(--estora-gold)' }}>Client Advisory Rating</div>
             </div>
             <div className="hidden md:block w-px h-16 bg-white/10"></div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">150+</div>
-              <div className="text-xs font-bold tracking-widest uppercase text-blue-400">Premium Locations</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">{uniqueLocationsCount > 0 ? `${uniqueLocationsCount}+` : '12+'}</div>
+              <div className="text-xs font-bold tracking-widest uppercase" style={{ color: 'var(--estora-gold)' }}>Prime Indian Cities</div>
             </div>
           </div>
 

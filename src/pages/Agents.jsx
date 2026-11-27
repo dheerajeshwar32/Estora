@@ -8,32 +8,32 @@ const DEMO_AGENTS = [
   {
     id: "a1",
     name: 'Rahul Sharma',
-    designation: 'Senior Property Consultant',
-    specialization: 'Luxury Villas & Estates',
+    designation: 'Senior Luxury Consultant',
+    specialization: 'Villas & Penthouses',
     experience: '12 Years',
-    propertiesListed: 12,
+    propertiesListed: 14,
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800',
-    contact: '+91 98765 43210'
+    contact: '+91 98204 71420'
   },
   {
     id: "a2",
     name: 'Priya Patel',
-    designation: 'Commercial Real Estate Expert',
-    specialization: 'Office Spaces & Retail',
-    experience: '8 Years',
-    propertiesListed: 8,
+    designation: 'Commercial Real Estate Advisor',
+    specialization: 'Grade-A Offices & Retail',
+    experience: '9 Years',
+    propertiesListed: 9,
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
-    contact: '+91 98765 43211'
+    contact: '+91 98114 63890'
   },
   {
     id: "a3",
     name: 'Arjun Desai',
-    designation: 'Residential Specialist',
-    specialization: 'Premium Apartments',
-    experience: '5 Years',
-    propertiesListed: 18,
+    designation: 'Residential Estates Specialist',
+    specialization: 'Homes & Plotted Estates',
+    experience: '6 Years',
+    propertiesListed: 11,
     image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800',
-    contact: '+91 98765 43212'
+    contact: '+91 98452 39180'
   }
 ];
 

@@ -55,7 +55,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-[color:var(--theme-white)] mb-1">Our Headquarters</p>
-                  <p className="text-sm text-slate-400">123 Horizon Avenue, Tech Park<br/>Bangalore, KA 560001</p>
+                  <p className="text-sm text-slate-400">Level 8, Prestige Meridian I, M.G. Road<br/>Bengaluru, KA 560001</p>
                 </div>
               </div>
               
@@ -65,7 +65,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-[color:var(--theme-white)] mb-1">Phone</p>
-                  <p className="text-sm text-slate-400">+91 1800 123 4567</p>
+                  <p className="text-sm text-slate-400">+91 80 4128 7400</p>
                 </div>
               </div>
               
@@ -94,7 +94,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   className="w-full bg-navy-950 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500 focus:border-blue-500 outline-none transition-colors"
-                  placeholder="John Doe"
+                  placeholder="Aarav Mehta"
                 />
               </div>
               <div>
@@ -105,7 +105,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   className="w-full bg-navy-950 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500 focus:border-blue-500 outline-none transition-colors"
-                  placeholder="john@example.com"
+                  placeholder="aarav.mehta@company.in"
                 />
               </div>
             </div>

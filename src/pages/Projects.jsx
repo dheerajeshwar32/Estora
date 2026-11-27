@@ -17,7 +17,7 @@ const DEMO_PROJECTS = [
     id: 2,
     name: 'The Sapphire Valley',
     status: 'Ongoing',
-    location: 'Whitefield, Bangalore',
+    location: 'Whitefield, Bengaluru',
     type: 'Premium Villas',
     price: 'Starting ₹3.5 Cr',
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200'
@@ -26,7 +26,7 @@ const DEMO_PROJECTS = [
     id: 3,
     name: 'Oasis Commercial Park',
     status: 'Completed',
-    location: 'Cyber City, Gurgaon',
+    location: 'Cyber City, Gurugram',
     type: 'Commercial Spaces',
     price: 'Lease / Buy',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200'

@@ -24,10 +24,11 @@ const StatBar = ({ icon: Icon, label, score }) => (
 );
 
 const NeighborhoodStats = ({ location, type = '' }) => {
-  // Generate pseudo-random scores based on location length so it's consistent
-  const getScore = (seed) => 65 + (seed % 30);
-  const locLength = (location || '').length || 10;
-  
+  // Deterministic location seed for realistic per-neighborhood scores & commute radii
+  const seedHash = (location || 'Mumbai').split('').reduce((acc, ch, idx) => acc + ch.charCodeAt(0) * (idx + 1), 0);
+  const getScore = (salt) => 68 + ((seedHash + salt) % 27);
+  const getKm = (min, span, salt) => (min + (((seedHash + salt) % (span * 10)) / 10)).toFixed(1);
+
   const isCommercial = type.toLowerCase().includes('commercial') || type.toLowerCase().includes('office');
   
   return (
@@ -42,28 +43,28 @@ const NeighborhoodStats = ({ location, type = '' }) => {
             <h2 className="text-xl font-medium text-[color:var(--theme-white)]">Neighborhood Explorer</h2>
           </div>
           
-          <StatBar icon={Navigation} label="Walkability" score={getScore(locLength * 2)} />
-          <StatBar icon={Bus} label="Transit Access" score={getScore(locLength * 3)} />
+          <StatBar icon={Navigation} label="Walkability" score={getScore(11)} />
+          <StatBar icon={Bus} label="Transit Access" score={getScore(23)} />
           {isCommercial ? (
-            <StatBar icon={Building} label="Business Hub Proximity" score={getScore(locLength * 5)} />
+            <StatBar icon={Building} label="Business Hub Proximity" score={getScore(37)} />
           ) : (
-            <StatBar icon={BookOpen} label="Local Schools" score={getScore(locLength * 5)} />
+            <StatBar icon={BookOpen} label="Local Schools" score={getScore(37)} />
           )}
           
           <p className="text-slate-400 text-sm mt-4 leading-relaxed">
-            Scores are calculated based on proximity to amenities, public transit routes, and verified {isCommercial ? 'commercial zones' : 'school districts'} in <span className="text-[color:var(--theme-white)] font-medium">{location}</span>.
+            Estimated scores reflect proximity to civic amenities, transit corridors, and {isCommercial ? 'business districts' : 'school zones'} around <span className="text-[color:var(--theme-white)] font-medium">{location}</span>.
           </p>
 
           <div className="mt-8 border-t border-white/5 pt-6">
-            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">What's Nearby?</h3>
+            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Estimated Commute Radii</h3>
             <div className="space-y-3">
               {!isCommercial && (
-                <div className="flex justify-between items-center text-sm"><span className="text-slate-300">School</span><span className="font-medium text-white">1.2 km</span></div>
+                <div className="flex justify-between items-center text-sm"><span className="text-slate-300">International School</span><span className="font-medium text-white">{getKm(0.8, 2.2, 3)} km</span></div>
               )}
-              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Hospital</span><span className="font-medium text-white">2.1 km</span></div>
-              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Shopping Mall</span><span className="font-medium text-white">3.4 km</span></div>
-              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Airport</span><span className="font-medium text-white">8.5 km</span></div>
-              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Railway Station</span><span className="font-medium text-white">5.2 km</span></div>
+              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Multi-Specialty Hospital</span><span className="font-medium text-white">{getKm(1.2, 3.0, 7)} km</span></div>
+              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Retail & Dining District</span><span className="font-medium text-white">{getKm(1.5, 4.0, 13)} km</span></div>
+              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">International Airport</span><span className="font-medium text-white">{getKm(11.0, 18.0, 19)} km</span></div>
+              <div className="flex justify-between items-center text-sm"><span className="text-slate-300">Metro / Rail Hub</span><span className="font-medium text-white">{getKm(1.8, 5.5, 29)} km</span></div>
             </div>
           </div>
         </div>

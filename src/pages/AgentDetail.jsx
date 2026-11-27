@@ -8,44 +8,44 @@ const AGENTS = [
   {
     id: "a1",
     name: "Rahul Sharma",
-    role: "Senior Property Consultant",
+    role: "Senior Luxury Consultant",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
     experience: "12 Years",
-    languages: ["English", "Hindi"],
-    specialization: "Luxury Villas & Apartments",
-    phone: "+91 98765 43210",
+    languages: ["English", "Hindi", "Marathi"],
+    specialization: "Villas & Penthouses",
+    phone: "+91 98204 71420",
     email: "rahul.s@estora.com",
-    bio: "Rahul has over a decade of experience in the luxury real estate market. He specializes in high-end villas and penthouses across major metropolitan cities. His client-first approach and deep market knowledge ensure seamless transactions.",
-    reviews: 48,
-    activeListings: 12
+    bio: "Rahul leads residential advisory across Mumbai, Pune, and coastal retreats in Alibaug and Goa. Over 12 years, he has structured private acquisitions of sea-facing penthouses and bespoke estates with thorough title verification.",
+    reviews: 42,
+    activeListings: 14
   },
   {
     id: "a2",
     name: "Priya Patel",
-    role: "Commercial Real Estate Expert",
+    role: "Commercial Real Estate Advisor",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
-    experience: "8 Years",
+    experience: "9 Years",
     languages: ["English", "Hindi", "Gujarati"],
-    specialization: "Retail & Office Spaces",
-    phone: "+91 98765 43211",
+    specialization: "Grade-A Offices & Retail",
+    phone: "+91 98114 63890",
     email: "priya.p@estora.com",
-    bio: "Priya focuses exclusively on commercial real estate, helping businesses find the perfect office spaces, retail storefronts, and commercial plots. She is known for her exceptional negotiation skills.",
-    reviews: 32,
-    activeListings: 8
+    bio: "Priya advises corporate occupiers and commercial investors across Navi Mumbai, Gurgaon Cyber City, and Hyderabad HITEC districts—specializing in institutional yield modeling, LEED-certified office towers, and retail leases.",
+    reviews: 31,
+    activeListings: 9
   },
   {
     id: "a3",
     name: "Arjun Desai",
-    role: "Residential Property Specialist",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+    role: "Residential Estates Specialist",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
     experience: "6 Years",
-    languages: ["English", "Hindi", "Telugu"],
-    specialization: "Residential Homes & Plots",
-    phone: "+91 98765 43212",
+    languages: ["English", "Hindi", "Kannada", "Telugu"],
+    specialization: "Homes & Plotted Estates",
+    phone: "+91 98452 39180",
     email: "arjun.d@estora.com",
-    bio: "Arjun specializes in residential properties — from cozy apartments for first-time buyers to premium independent houses and gated community plots. He is passionate about helping families find their dream homes with transparent, hassle-free processes.",
-    reviews: 27,
-    activeListings: 10
+    bio: "Based in Bengaluru, Arjun assists families and NRI buyers across Whitefield, Indiranagar, Chennai, and Hyderabad—guiding everything from gated plotted developments to turnkey smart residences with full RERA documentation checks.",
+    reviews: 26,
+    activeListings: 11
   }
 ];
 

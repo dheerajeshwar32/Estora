@@ -1,43 +1,38 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="128" fill="#0B1121"/>
-  
-  <defs>
-    <linearGradient id="blueGrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#60A5FA" />
-      <stop offset="100%" stop-color="#2563EB" />
-    </linearGradient>
-    
-    <linearGradient id="whiteGrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#CBD5E1" />
-    </linearGradient>
-
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="15" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-  </defs>
-
-  <!-- Architectural E -->
-  <g transform="translate(130, 130)">
-    <!-- Vertical Stem -->
-    <path d="M0 0 H48 V252 H0 Z" fill="url(#whiteGrad)"/>
-    
-    <!-- Top Bar -->
-    <path d="M48 0 H180 V48 H48 Z" fill="url(#whiteGrad)"/>
-    
-    <!-- Middle Bar -->
-    <path d="M48 102 H130 V150 H48 Z" fill="url(#whiteGrad)"/>
-    
-    <!-- Bottom Bar -->
-    <path d="M48 204 H180 V252 H48 Z" fill="url(#whiteGrad)"/>
-    
-    <!-- Abstract building accent (a dynamic slice) -->
-    <path d="M150 0 L180 0 L150 48 Z" fill="url(#blueGrad)"/>
-    <path d="M100 102 L130 102 L100 150 Z" fill="url(#blueGrad)"/>
-    <path d="M150 204 L180 204 L150 252 Z" fill="url(#blueGrad)"/>
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 16 1 L 32 1 C 41.5 1, 47 6.5, 47 16 L 47 32 C 47 41.5, 41.5 47, 32 47 L 16 47 C 6.5 47, 1 41.5, 1 32 L 1 16 C 1 6.5, 6.5 1, 16 1 Z" fill="#0B1324" />
+  <g transform="translate(6, 6)">
+    <path
+      d="M 24.55 4.4 H 3.4 V 31.6 H 16.5"
+      stroke="#F8FAFC"
+      stroke-width="2.8"
+      stroke-linejoin="miter"
+      stroke-linecap="butt"
+    />
+    <path
+      d="M 16.5 10.2 H 9.2 V 25.8"
+      stroke="#F8FAFC"
+      stroke-width="2.8"
+      stroke-linejoin="miter"
+      stroke-linecap="butt"
+    />
+    <path
+      d="M 9.2 18 H 24.5"
+      stroke="#F8FAFC"
+      stroke-width="2.8"
+      stroke-linecap="butt"
+    />
+    <path
+      d="M 16.5 31.6 V 12.45 A 8.05 8.05 0 0 1 32.6 12.45 V 31.6 Z"
+      stroke="#D8BE8F"
+      stroke-width="2.8"
+      stroke-linejoin="miter"
+      stroke-linecap="butt"
+    />
+    <path
+      d="M 7.8 25.8 H 24.5"
+      stroke="#F8FAFC"
+      stroke-width="2.8"
+      stroke-linecap="butt"
+    />
   </g>
-
-  <!-- The signature Blue Dot -->
-  <circle cx="365" cy="358" r="28" fill="url(#blueGrad)" filter="url(#glow)"/>
 </svg>

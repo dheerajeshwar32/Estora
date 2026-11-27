@@ -6,6 +6,7 @@ import { AppProvider, useAppContext } from './context/AppContext';
 import { Heart, X, CheckCircle, AlertCircle, Info, Trash2, User, LogOut, LogIn, Sun, Moon, Menu } from 'lucide-react';
 import UserAuthModal from './components/UserAuthModal';
 import CompareModal from './components/CompareModal';
+import EstoraLogo from './components/EstoraLogo';
 
 import Listings from './pages/Listings';
 const PropertyDetail = lazy(() => import('./pages/PropertyDetail'));
@@ -157,8 +158,10 @@ const Navbar = () => {
     <>
       <nav className="border-b border-white/5 bg-navy-950/80 backdrop-blur-xl sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center">
-          <div>
-            <Link to="/" className="text-2xl font-bold tracking-tighter text-white mr-8">ESTORA<span className="text-blue-500">.</span></Link>
+          <div className="shrink-0">
+            <Link to="/" className="estora-logo-link inline-flex items-center mr-8">
+              <EstoraLogo variant="lockup" size="md" />
+            </Link>
           </div>
           
           <div className="hidden lg:flex items-center gap-6">
@@ -316,7 +319,9 @@ const Footer = () => (
       <h2 className="sr-only">Footer Navigation</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div className="md:col-span-2">
-          <Link to="/" className="text-2xl font-bold tracking-tighter text-white mb-4 block">ESTORA<span className="text-blue-500">.</span></Link>
+          <Link to="/" className="estora-logo-link inline-flex items-center mb-4">
+            <EstoraLogo variant="lockup" size="md" />
+          </Link>
           <p className="text-sm text-slate-400 font-light max-w-sm leading-relaxed">
             Curating the finest premium properties globally. Elevating the real estate experience through intelligent design and AI-driven discovery.
           </p>

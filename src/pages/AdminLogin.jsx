@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
+import EstoraLogo from '../components/EstoraLogo';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -30,7 +31,10 @@ const AdminLogin = () => {
       <div className="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl w-full max-w-md">
         
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-white mb-2">Welcome Back</h2>
+          <div className="flex justify-center mb-6">
+            <EstoraLogo variant="lockup" size="lg" />
+          </div>
+          <h1 className="text-3xl font-medium tracking-tight text-white mb-2">Welcome Back</h1>
           <p className="text-sm text-slate-400 font-light">Sign in to manage your exclusive listings.</p>
         </div>
 

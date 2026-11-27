@@ -317,7 +317,7 @@ const Listings = () => {
               className="flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-400"
             >
               <span>{listings.length}+ Listings</span>
-              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--estora-gold)' }} aria-hidden="true"></span>
               <span>{uniqueLocationsCount} Locations</span>
             </motion.div>
           )}

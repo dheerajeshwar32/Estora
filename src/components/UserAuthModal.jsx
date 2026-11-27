@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAppContext } from '../context/AppContext';
+import EstoraLogo from './EstoraLogo';
 
 const UserAuthModal = ({ isOpen, onClose }) => {
   const { loginWithGoogle, loginWithEmail, signupWithEmail } = useAuth();
@@ -87,6 +88,9 @@ const UserAuthModal = ({ isOpen, onClose }) => {
             </button>
 
             <div className="text-center mb-8">
+              <div className="flex justify-center mb-5">
+                <EstoraLogo variant="lockup" size="lg" />
+              </div>
               <h2 className="text-2xl font-medium text-white mb-2">
                 {mode === 'login' ? 'Welcome Back' : 'Create Account'}
               </h2>

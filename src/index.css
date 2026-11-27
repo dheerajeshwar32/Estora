@@ -12,10 +12,10 @@
 :root {
   color-scheme: dark;
   --theme-navy-950: #0a1128; 
-  --theme-navy-900: #101c3a;
+  --theme-navy-900: #111f45;
   --theme-white: #ffffff;
-  --theme-slate-300: #cbd5e1;
-  --theme-slate-400: #94a3b8;
+  --theme-slate-300: #d1def2;
+  --theme-slate-400: #9bb1d4;
   --theme-slate-500: #8ea3bf;
   --theme-map-filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
 
@@ -30,16 +30,16 @@
 .light,
 [data-theme='light'] {
   color-scheme: light;
-  --theme-navy-950: #f1f5f9; 
+  --theme-navy-950: #eef3fb; 
   --theme-navy-900: #ffffff; 
-  --theme-white: #0f172a; 
-  --theme-slate-300: #475569;
-  --theme-slate-400: #475569;
-  --theme-slate-500: #334155;
+  --theme-white: #132c63;         /* Rich Royal Navy Blue — Zero Black */
+  --theme-slate-300: #254380;     /* Architectural Mid-Navy */
+  --theme-slate-400: #3a5a96;     /* Muted Steel Navy */
+  --theme-slate-500: #2b4880;     /* Refined Steel Navy */
   --theme-map-filter: none;
 
   /* Light Mode Brand Tokens */
-  --estora-ink: #0B1324;          /* Deep Architectural Midnight Navy */
+  --estora-ink: #132c63;          /* Unified Royal Navy Blue */
   --estora-gold: #C2A673;         /* Brushed Champagne Gold */
   --estora-gold-soft: rgba(194, 166, 115, 0.16);
 }
@@ -62,10 +62,15 @@ body {
   color: var(--color-white);
 }
 
+:where(a:any-link, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--estora-gold);
+  outline-offset: 2px;
+}
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--color-navy-950); }
-::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #334155; }
+::-webkit-scrollbar-thumb { background: #1d356b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2c4d94; }
 
 @keyframes pulse-blob-1 {
   0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.2; }

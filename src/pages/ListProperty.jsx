@@ -244,7 +244,7 @@ const ListProperty = () => {
               <button 
                 type="submit" 
                 disabled={isSubmitting} 
-                className="w-full bg-blue-500 text-white font-bold tracking-wide py-4 px-8 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
+                className="w-full bg-blue-600 text-[#ffffff] font-bold tracking-wide py-4 px-8 rounded-full hover:bg-blue-700 transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
               >
                 {isSubmitting ? (
                   <><Loader2 size={18} className="animate-spin" /> Submitting Property...</>

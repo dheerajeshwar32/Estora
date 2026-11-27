@@ -775,7 +775,7 @@ const AdminDashboard = () => {
             {tab.label}
             {tab.badge > 0 && (
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                activeTab === tab.id ? 'bg-blue-500 text-white' : 'bg-blue-500/20 text-blue-400'
+                activeTab === tab.id ? 'bg-blue-600 text-[#ffffff]' : 'bg-blue-500/20 text-blue-400'
               }`}>
                 {tab.badge}
               </span>
@@ -903,7 +903,7 @@ const AdminDashboard = () => {
                     {formData.existingImages.map((url, i) => (
                       <div key={`existing-${i}`} className="relative aspect-square rounded-xl overflow-hidden bg-navy-950 border border-white/10 group">
                         <img src={url} alt={`Existing ${i + 1}`} className="w-full h-full object-cover opacity-80" />
-                        <button type="button" onClick={() => removeExistingImage(i)} className="absolute top-1 right-1 bg-red-500/80 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button type="button" onClick={() => removeExistingImage(i)} className="absolute top-1 right-1 bg-red-500/80 text-[#ffffff] p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                           <X size={12} />
                         </button>
                       </div>
@@ -912,8 +912,8 @@ const AdminDashboard = () => {
                     {imagePreviews.map((url, i) => (
                       <div key={`new-${i}`} className="relative aspect-square rounded-xl overflow-hidden bg-navy-950 border border-blue-500/30 group">
                         <img src={url} alt={`New ${i + 1}`} className="w-full h-full object-cover opacity-80" />
-                        <div className="absolute top-1 left-1 bg-blue-500/80 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase">New</div>
-                        <button type="button" onClick={() => removeNewImage(i)} className="absolute top-1 right-1 bg-red-500/80 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute top-1 left-1 bg-blue-600/90 text-[#ffffff] text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase">New</div>
+                        <button type="button" onClick={() => removeNewImage(i)} className="absolute top-1 right-1 bg-red-500/80 text-[#ffffff] p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                           <X size={12} />
                         </button>
                       </div>
@@ -1154,7 +1154,7 @@ const AdminDashboard = () => {
                     {sub.status === 'new' && (
                       <button 
                         onClick={() => handleApproveSubmission(sub)}
-                        className="text-xs font-bold tracking-widest uppercase px-5 py-2.5 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20 flex-1 md:flex-none"
+                        className="text-xs font-bold tracking-widest uppercase px-5 py-2.5 bg-blue-600 text-[#ffffff] rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20 flex-1 md:flex-none"
                       >
                         Approve
                       </button>

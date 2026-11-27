@@ -61,7 +61,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-[60] flex items-center justify-center p-4">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-[#0d1d42]/75 backdrop-blur-md z-[60] flex items-center justify-center p-4">
           <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-navy-900 border border-white/10 p-8 rounded-3xl w-full max-w-lg shadow-2xl relative overflow-hidden">
           <button onClick={onClose} aria-label="Close tour scheduling modal" className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors z-10 bg-navy-950 p-2 rounded-full"><X size={20}/></button>
           
@@ -94,7 +94,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
                           <button
                             key={i} type="button"
                             onClick={() => setFormData({...formData, date: dateStr})}
-                            className={`snap-start shrink-0 w-20 p-3 rounded-xl border flex flex-col items-center justify-center transition-all ${isSelected ? 'bg-blue-600 border-blue-500 text-white shadow-lg' : 'bg-navy-950 border-white/5 text-slate-400 hover:border-white/20'}`}
+                            className={`snap-start shrink-0 w-20 p-3 rounded-xl border flex flex-col items-center justify-center transition-all ${isSelected ? 'bg-blue-600 border-blue-500 text-[#ffffff] shadow-lg' : 'bg-navy-950 border-white/10 text-slate-400 hover:border-white/25'}`}
                           >
                             <span className="text-xs uppercase font-bold tracking-wider mb-1">{date.toLocaleDateString('en-US', { weekday: 'short' })}</span>
                             <span className="text-xl font-medium">{date.getDate()}</span>
@@ -113,7 +113,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
                         <button
                           key={time} type="button"
                           onClick={() => setFormData({...formData, time})}
-                          className={`py-3 rounded-xl border text-sm font-medium transition-all ${formData.time === time ? 'bg-blue-600 border-blue-500 text-white' : 'bg-navy-950 border-white/5 text-slate-400 hover:border-white/20'}`}
+                          className={`py-3 rounded-xl border text-sm font-medium transition-all ${formData.time === time ? 'bg-blue-600 border-blue-500 text-[#ffffff]' : 'bg-navy-950 border-white/10 text-slate-400 hover:border-white/25'}`}
                         >
                           {time}
                         </button>
@@ -142,7 +142,7 @@ const ScheduleTourModal = ({ isOpen, onClose, property, showToast }) => {
                   <input type="email" required placeholder="Email Address" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full p-4 bg-navy-950 border border-white/10 rounded-xl text-[color:var(--theme-white)] outline-none focus:border-blue-500 transition-colors" />
                   <input type="tel" required placeholder="Phone Number" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full p-4 bg-navy-950 border border-white/10 rounded-xl text-[color:var(--theme-white)] outline-none focus:border-blue-500 transition-colors" />
                   
-                  <button type="submit" disabled={isSending} className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors mt-6 disabled:opacity-50 flex justify-center items-center">
+                  <button type="submit" disabled={isSending} className="w-full bg-blue-600 text-[#ffffff] font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors mt-6 disabled:opacity-50 flex justify-center items-center">
                     {isSending ? 'Confirming Tour...' : 'Confirm Tour Request'}
                   </button>
                   <button type="button" onClick={() => setStep(1)} className="w-full text-slate-500 hover:text-white py-2 text-sm font-medium transition-colors mt-2">Back</button>

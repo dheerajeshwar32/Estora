@@ -73,7 +73,7 @@ const UserAuthModal = ({ isOpen, onClose }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[#0d1d42]/75 backdrop-blur-md z-50 flex items-center justify-center p-4"
           onClick={onClose}
         >
           <motion.div
@@ -159,7 +159,7 @@ const UserAuthModal = ({ isOpen, onClose }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-blue-600 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
+                className="w-full bg-blue-600 text-[#ffffff] font-bold py-3.5 px-4 rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
               >
                 {isLoading ? 'Please wait...' : mode === 'login' ? 'Sign In' : 'Create Account'}
               </button>

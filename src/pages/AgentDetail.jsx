@@ -86,7 +86,7 @@ const AgentDetail = () => {
               <a href={`mailto:${agent.email}`} aria-label={`Email ${agent.name}`} className="flex-1 bg-white/5 hover:bg-white/10 transition-colors border border-white/10 rounded-xl py-3 flex justify-center items-center text-white">
                 <Mail size={18} />
               </a>
-              <button aria-label={`Message ${agent.name}`} className="flex-1 bg-blue-500 hover:bg-blue-600 transition-colors rounded-xl py-3 flex justify-center items-center text-white shadow-lg shadow-blue-500/20">
+              <button aria-label={`Message ${agent.name}`} className="flex-1 bg-blue-600 hover:bg-blue-700 transition-colors rounded-xl py-3 flex justify-center items-center text-[#ffffff] shadow-lg shadow-blue-500/20">
                 <MessageSquare size={18} />
               </button>
             </div>

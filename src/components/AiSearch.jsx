@@ -113,9 +113,9 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
 
   return (
     <div className="relative max-w-3xl mx-4 sm:mx-auto -mt-8 mb-16 z-20">
-      <div className="bg-navy-900 rounded-full shadow-2xl p-2 md:p-2.5 flex items-center transition-all ring-1 ring-white/10 hover:ring-blue-500/50 focus-within:ring-blue-500/50">
+      <div className="bg-navy-900 rounded-full shadow-[0_20px_50px_-14px_rgba(19,44,99,0.22)] p-2 md:p-2.5 flex items-center transition-all ring-1 ring-white/15 hover:ring-[color:var(--estora-gold)] focus-within:ring-[color:var(--estora-gold)]">
         
-        <div className="pl-4 pr-2 md:pl-6 md:pr-3 text-blue-400">
+        <div className="pl-4 pr-2 md:pl-6 md:pr-3" style={{ color: 'var(--estora-gold)' }}>
           <Sparkles size={20} className={isSearching ? "animate-spin" : "animate-pulse"} />
         </div>
 
@@ -140,7 +140,7 @@ const AiSearch = ({ listings, onSearchResults, resetFilters }) => {
           <button
             type="submit"
             disabled={isSearching}
-            className="bg-white text-navy-950 font-semibold py-2.5 px-4 md:py-3 md:px-8 rounded-full hover:bg-slate-200 transition-colors disabled:opacity-50 text-xs md:text-sm tracking-wide shrink-0 ml-1 md:ml-0"
+            className="bg-white text-navy-950 font-semibold py-2.5 px-4 md:py-3 md:px-8 rounded-full hover:opacity-90 transition-all shadow-md hover:shadow-lg disabled:opacity-50 text-xs md:text-sm tracking-wide shrink-0 ml-1 md:ml-0"
           >
             {isSearching ? '...' : 'Search'}
           </button>

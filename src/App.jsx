@@ -109,7 +109,7 @@ const GlobalUI = () => {
                         <div className="flex flex-col gap-2">
                           <button 
                             onClick={() => toggleCompare(listing)} 
-                            className={`p-1.5 rounded-lg text-xs font-bold uppercase transition-colors ${isComparing ? 'bg-blue-600 text-white' : 'bg-white/10 text-slate-300 hover:bg-white/20'}`}
+                            className={`p-1.5 rounded-lg text-xs font-bold uppercase transition-colors ${isComparing ? 'bg-blue-600 text-[#ffffff]' : 'bg-white/10 text-slate-300 hover:bg-white/20'}`}
                             aria-label={isComparing ? 'Remove from comparison' : 'Add to comparison'}
                             title={isComparing ? 'Remove from Compare' : 'Add to Compare'}
                           >
@@ -131,7 +131,7 @@ const GlobalUI = () => {
                       setIsSavedDrawerOpen(false);
                       setIsCompareModalOpen(true);
                     }}
-                    className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors flex justify-center items-center gap-2"
+                    className="w-full bg-blue-600 text-[#ffffff] py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors flex justify-center items-center gap-2"
                   >
                     Compare Properties ({compareList.length})
                   </button>
@@ -156,7 +156,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="border-b border-white/5 bg-navy-950/80 backdrop-blur-xl sticky top-0 z-40">
+      <nav className="border-b border-white/10 bg-navy-900/85 backdrop-blur-xl sticky top-0 z-40 shadow-[0_8px_32px_-14px_rgba(19,44,99,0.12)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-20 items-center">
           <div className="shrink-0">
             <Link to="/" className="estora-logo-link inline-flex items-center mr-8">
@@ -165,18 +165,18 @@ const Navbar = () => {
           </div>
           
           <div className="hidden lg:flex items-center gap-6">
-            <Link to="/" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Home</Link>
-            <Link to="/properties" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Properties</Link>
-            <Link to="/projects" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Projects</Link>
-            <Link to="/agents" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Agents</Link>
-            <Link to="/services" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Services</Link>
-            <Link to="/about" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">About</Link>
-            <Link to="/contact" className="text-[10px] font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">Contact</Link>
+            <Link to="/" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">Home</Link>
+            <Link to="/properties" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">Properties</Link>
+            <Link to="/projects" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">Projects</Link>
+            <Link to="/agents" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">Agents</Link>
+            <Link to="/services" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">Services</Link>
+            <Link to="/about" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">About</Link>
+            <Link to="/contact" className="text-[11px] font-semibold tracking-[0.14em] uppercase text-slate-300 hover:text-white transition-colors">Contact</Link>
           </div>
 
           <div className="flex items-center gap-4 ml-auto">
             <div className="hidden md:block mr-2">
-              <Link to="/list-property" className="text-xs font-bold tracking-widest uppercase text-slate-300 hover:text-white transition-colors">
+              <Link to="/list-property" className="text-[11px] font-bold tracking-[0.14em] uppercase text-white hover:text-[color:var(--estora-gold)] border border-white/15 hover:border-[color:var(--estora-gold)] px-4 py-2 rounded-full transition-all">
                 List Property
               </Link>
             </div>
@@ -184,7 +184,7 @@ const Navbar = () => {
             <div>
               <button 
                 onClick={toggleTheme} 
-                className="text-slate-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"
+                className="text-slate-300 hover:text-white transition-colors p-2 rounded-full hover:bg-white/5"
                 aria-label="Toggle Theme"
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -192,10 +192,10 @@ const Navbar = () => {
             </div>
 
             <div>
-              <button onClick={() => setIsSavedDrawerOpen(true)} className="relative text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
+              <button onClick={() => setIsSavedDrawerOpen(true)} className="relative text-slate-300 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
                 <Heart size={20} className={savedListings.length > 0 ? 'fill-blue-500 text-blue-500' : ''} />
                 <span className="hidden sm:block">Saved</span>
-                {savedListings.length > 0 && <span className="absolute -top-1.5 -left-1.5 bg-blue-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">{savedListings.length}</span>}
+                {savedListings.length > 0 && <span className="absolute -top-1.5 -left-1.5 bg-blue-600 text-[#ffffff] text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">{savedListings.length}</span>}
               </button>
             </div>
 
@@ -205,12 +205,12 @@ const Navbar = () => {
                 <div className="relative">
                   <button
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 px-3 py-2 rounded-full transition-all"
+                    className="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[color:var(--estora-gold)] px-3 py-2 rounded-full transition-all shadow-sm"
                   >
                     {user.photoURL ? (
                       <img src={user.photoURL} alt="" className="w-7 h-7 rounded-full object-cover" referrerPolicy="no-referrer" />
                     ) : (
-                      <div className="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">
+                      <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[#ffffff] text-xs font-bold">
                         {userInitial}
                       </div>
                     )}
@@ -234,7 +234,7 @@ const Navbar = () => {
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
-                          className="absolute right-0 top-full mt-2 w-56 bg-navy-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50"
+                          className="absolute right-0 top-full mt-2 w-56 bg-navy-900 border border-white/15 rounded-2xl shadow-2xl overflow-hidden z-50"
                         >
                           <div className="p-4 border-b border-white/10">
                             <p className="text-sm font-medium text-white truncate">{user.displayName || 'User'}</p>
@@ -263,7 +263,7 @@ const Navbar = () => {
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-slate-400 hover:text-white transition-colors bg-white/5 px-4 py-2.5 rounded-full border border-white/5 hover:border-white/20"
+                  className="flex items-center gap-2 text-[11px] font-bold tracking-[0.14em] uppercase text-white hover:text-[color:var(--estora-gold)] transition-all bg-white/5 px-4 py-2.5 rounded-full border border-white/15 hover:border-[color:var(--estora-gold)] shadow-sm"
                 >
                   <LogIn size={14} />
                   <span className="hidden sm:block">Sign In</span>
@@ -314,8 +314,8 @@ const Navbar = () => {
 };
 
 const Footer = () => (
-  <footer className="border-t border-white/5 bg-navy-900/50 mt-20">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <footer className="border-t border-white/10 bg-navy-900/75 backdrop-blur-md mt-24">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
       <h2 className="sr-only">Footer Navigation</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div className="md:col-span-2">
@@ -329,19 +329,19 @@ const Footer = () => (
         <div>
           <h3 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Explore</h3>
           <ul className="space-y-2 text-sm text-slate-400 font-light">
-            <li><Link to="/" className="hover:text-blue-400 transition-colors">Premium Listings</Link></li>
-            <li><Link to="/projects" className="hover:text-blue-400 transition-colors">New Developments</Link></li>
-            <li><Link to="/agents" className="hover:text-blue-400 transition-colors">Our Agents</Link></li>
-            <li><Link to="/services" className="hover:text-blue-400 transition-colors">Services</Link></li>
+            <li><Link to="/" className="hover:text-[color:var(--estora-gold)] transition-colors">Premium Listings</Link></li>
+            <li><Link to="/projects" className="hover:text-[color:var(--estora-gold)] transition-colors">New Developments</Link></li>
+            <li><Link to="/agents" className="hover:text-[color:var(--estora-gold)] transition-colors">Our Agents</Link></li>
+            <li><Link to="/services" className="hover:text-[color:var(--estora-gold)] transition-colors">Services</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold tracking-widest uppercase text-white mb-4">Company</h3>
           <ul className="space-y-2 text-sm text-slate-400 font-light">
-            <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
-            <li><Link to="/blog" className="hover:text-blue-400 transition-colors">Blog & Guides</Link></li>
-            <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
-            <li><Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/about" className="hover:text-[color:var(--estora-gold)] transition-colors">About Us</Link></li>
+            <li><Link to="/blog" className="hover:text-[color:var(--estora-gold)] transition-colors">Blog & Guides</Link></li>
+            <li><Link to="/contact" className="hover:text-[color:var(--estora-gold)] transition-colors">Contact</Link></li>
+            <li><Link to="/privacy" className="hover:text-[color:var(--estora-gold)] transition-colors">Privacy Policy</Link></li>
           </ul>
         </div>
       </div>

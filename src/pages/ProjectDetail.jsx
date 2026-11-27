@@ -47,7 +47,7 @@ const ProjectDetail = () => {
         <div className="absolute bottom-0 left-0 w-full p-8 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-blue-500 mb-4 inline-block">
+              <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-[#ffffff] bg-blue-600 mb-4 inline-block">
                 {project.status}
               </span>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 break-words">{project.name}</h1>
@@ -100,7 +100,7 @@ const ProjectDetail = () => {
                     { stage: 'Handover', status: 'Upcoming', active: false }
                   ].map((step, i) => (
                     <div key={i} className="flex items-center gap-4">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${step.status === 'Completed' ? 'bg-green-500 text-white' : step.status === 'In Progress' ? 'bg-blue-500 text-white' : 'bg-white/10 text-slate-500'}`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${step.status === 'Completed' ? 'bg-green-500 text-[#ffffff]' : step.status === 'In Progress' ? 'bg-blue-600 text-[#ffffff]' : 'bg-white/10 text-slate-500'}`}>
                         {step.status === 'Completed' ? <CheckCircle2 size={16} /> : <div className="w-2 h-2 rounded-full bg-current" />}
                       </div>
                       <div className="flex-1">
@@ -130,7 +130,7 @@ const ProjectDetail = () => {
               <div className="space-y-4">
                 <button 
                   onClick={() => setIsScheduleOpen(true)}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-[#ffffff] font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   <Calendar size={18} /> Schedule Site Visit
                 </button>

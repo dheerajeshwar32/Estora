@@ -282,17 +282,17 @@ const Listings = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 md:pt-8 md:pb-12">
       
       {}
-      <div className="relative pt-10 pb-16 md:pt-14 md:pb-20 text-center overflow-hidden rounded-3xl mb-4">
+      <div className="relative pt-10 pb-16 md:pt-14 md:pb-20 text-center overflow-hidden rounded-3xl mb-4 border border-white/10 shadow-[0_24px_70px_-24px_rgba(19,44,99,0.16)]">
         {}
         <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
-          <div className="absolute inset-0 bg-navy-950" />
+          <div className="absolute inset-0 bg-navy-900/50" />
           <div 
-            className="absolute -top-[50%] -left-[20%] w-[70%] h-[150%] bg-blue-500/30 blur-[120px] rounded-full animate-blob-1"
+            className="absolute -top-[50%] -left-[20%] w-[70%] h-[150%] bg-blue-500/20 blur-[120px] rounded-full animate-blob-1"
           />
           <div 
-            className="absolute top-[20%] -right-[20%] w-[60%] h-[120%] bg-purple-500/20 blur-[120px] rounded-full animate-blob-2"
+            className="absolute top-[20%] -right-[20%] w-[60%] h-[120%] bg-[#C2A673]/15 blur-[120px] rounded-full animate-blob-2"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/80 to-navy-950 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/75 to-navy-950 z-0" />
         </div>
         
         <h1 
@@ -308,13 +308,13 @@ const Listings = () => {
           Explore an exclusive collection of premium properties tailored to your lifestyle.
         </p>
         
-        <div className="min-h-[24px] mb-10 relative z-10 flex justify-center items-center">
+        <div className="min-h-[34px] mb-10 relative z-10 flex justify-center items-center">
           {!loading && listings.length > 0 && (
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               transition={{ duration: 0.4 }}
-              className="flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-widest uppercase text-slate-400"
+              className="inline-flex justify-center items-center gap-4 px-5 py-1.5 rounded-full bg-navy-900/70 border border-white/10 shadow-sm text-xs md:text-sm font-bold tracking-widest uppercase text-slate-300"
             >
               <span>{listings.length}+ Listings</span>
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--estora-gold)' }} aria-hidden="true"></span>
@@ -358,13 +358,13 @@ const Listings = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: "AI-Powered Discovery", desc: "Just type what you want, and our Gemini-powered engine finds the perfect match instantly.", icon: <Sparkles className="text-blue-400 w-6 h-6" /> },
-              { title: "Verified Premium", desc: "Every property is hand-picked and verified to ensure the highest standards of luxury.", icon: <Shield className="text-purple-400 w-6 h-6" /> },
-              { title: "Seamless Experience", desc: "From immersive galleries to instant contact, designed for the modern homebuyer.", icon: <Zap className="text-emerald-400 w-6 h-6" /> }
+              { title: "Verified Premium", desc: "Every property is hand-picked and verified to ensure the highest standards of luxury.", icon: <Shield className="w-6 h-6" style={{ color: 'var(--estora-gold)' }} /> },
+              { title: "Seamless Experience", desc: "From immersive galleries to instant contact, designed for the modern homebuyer.", icon: <Zap className="text-emerald-500 w-6 h-6" /> }
             ].map((feat, i) => (
-              <div key={i} className="group relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl overflow-hidden hover:border-white/20 transition-colors duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div key={i} className="group relative bg-navy-900/90 border border-white/10 rounded-3xl p-8 backdrop-blur-xl overflow-hidden shadow-[0_14px_40px_-16px_rgba(19,44,99,0.12)] hover:border-[color:var(--estora-gold)] transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-[#C2A673]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-12 bg-navy-900 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-12 h-12 bg-navy-950 border border-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                     {feat.icon}
                   </div>
                   <h3 className="text-white font-medium mb-3 tracking-wide text-lg">{feat.title}</h3>
@@ -434,7 +434,7 @@ const Listings = () => {
           )}
         </AnimatePresence>
 
-        <div className="hidden md:block w-full md:w-1/4 bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 h-fit sticky top-28 z-10">
+        <div className="hidden md:block w-full md:w-1/4 bg-navy-900/90 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-[0_18px_50px_-18px_rgba(19,44,99,0.14)] h-fit sticky top-28 z-10">
           <h2 className="text-sm font-bold tracking-widest uppercase text-slate-400 mb-6">Refine</h2>
           {filterContent}
         </div>

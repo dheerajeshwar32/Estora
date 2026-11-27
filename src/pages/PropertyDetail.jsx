@@ -65,7 +65,7 @@ const PropertyEnquiryForm = ({ propertyId }) => {
           <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Message</label>
           <textarea required rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full bg-navy-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="I would like to know more about this property..." />
         </div>
-        <button disabled={loading} type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold tracking-wide py-4 rounded-xl transition-colors mt-4">
+        <button disabled={loading} type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-[#ffffff] font-bold tracking-wide py-4 rounded-xl transition-colors mt-4">
           {loading ? 'Sending...' : 'Send Enquiry'}
         </button>
       </form>

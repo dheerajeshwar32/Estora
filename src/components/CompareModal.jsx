@@ -18,7 +18,7 @@ const CompareModal = () => {
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           exit={{ opacity: 0 }} 
-          className="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-[70] flex items-center justify-center p-4 overflow-y-auto"
+          className="fixed inset-0 bg-[#0d1d42]/75 backdrop-blur-md z-[70] flex items-center justify-center p-4 overflow-y-auto"
         >
         <motion.div 
           initial={{ scale: 0.95, opacity: 0, y: 20 }} 
@@ -53,7 +53,7 @@ const CompareModal = () => {
                           <button 
                             onClick={() => toggleCompare(prop)}
                             aria-label={`Remove ${prop.title} from comparison`}
-                            className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                            className="absolute top-2 right-2 bg-red-500 text-[#ffffff] p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
                           >
                             <X size={14} />
                           </button>
